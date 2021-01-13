@@ -1,0 +1,12 @@
+<h3 mat-dialog-title *ngIf="title">{{title}}</h3>
+
+<mat-dialog-content>
+    <p class="message">
+        {{message}}
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+
+    <button mat-stroked-button color="primary" mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+    <button mat-raised-button color="primary" (click)="onConfirmClick()" tabindex="1">{{confirmButtonText}}</button>
+</mat-dialog-actions>

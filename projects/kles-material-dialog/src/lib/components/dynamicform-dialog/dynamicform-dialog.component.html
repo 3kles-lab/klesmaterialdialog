@@ -1,0 +1,14 @@
+<div mat-dialog>
+    <div mat-dialog-content>
+
+        <app-kles-dynamic-form [direction]="direction" [fields]="fields" [validators]="validators"
+            [asyncValidators]="asyncValidators">
+        </app-kles-dynamic-form>
+
+    </div>
+    <div mat-dialog-actions align="center">
+        <button mat-button color="primary" (click)="onClose()">{{buttonCancel}}</button>
+        <button mat-raised-button color="primary" [disabled]="!dynamicForm.form.valid"
+            (click)="onOK()">{{buttonOK}}</button>
+    </div>
+</div>
