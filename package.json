@@ -1,5 +1,5 @@
 {
-  "name": "test-lib",
+  "name": "KlesMaterialDialog",
   "version": "0.0.0",
   "scripts": {
     "build:lib": "ng build kles-material-dialog --prod",
