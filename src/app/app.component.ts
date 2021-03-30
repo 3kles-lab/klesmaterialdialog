@@ -128,7 +128,8 @@ export class AppComponent {
         item: this.item,
         //direction: 'row',
         buttonCancel: 'Annuler',
-        buttonOK: 'Confirmer'
+        buttonOK: 'Confirmer',
+        
       } as IKlesDynamicFormDataDialog
 
     });
