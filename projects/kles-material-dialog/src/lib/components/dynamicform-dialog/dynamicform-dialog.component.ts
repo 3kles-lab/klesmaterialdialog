@@ -38,7 +38,10 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
     }
 
     ngAfterViewInit(): void {
-        this.dynamicForm.form.markAllAsTouched();
+        if (this.item && Object.keys(this.item).length > 0) {
+            this.dynamicForm.form.markAllAsTouched();
+        }
+
         this.ref.detectChanges();
         this.onLoadedForm.emit(true);
     }
