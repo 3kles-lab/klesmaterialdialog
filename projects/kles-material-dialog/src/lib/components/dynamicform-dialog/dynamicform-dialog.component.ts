@@ -30,7 +30,7 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
         if (data.direction) {
             this.direction = data.direction;
         }
-        data.fields.forEach(f => f.value = this.item[f.name] || '');
+        data.fields.forEach(f => f.value = this.item[f.name]);
         this.fields = data.fields;
         if (data.buttonCancel) this.buttonCancel = data.buttonCancel;
         if (data.buttonOK) this.buttonOK = data.buttonOK;
