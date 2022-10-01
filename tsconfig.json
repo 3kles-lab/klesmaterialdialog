@@ -16,10 +16,6 @@
       "dom"
     ],
     "paths": {
-      "my-lib": [
-        "dist/my-lib/my-lib",
-        "dist/my-lib"
-      ],
       "kles-material-dialog": [
         "dist/kles-material-dialog/kles-material-dialog",
         "dist/kles-material-dialog"
