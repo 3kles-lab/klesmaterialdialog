@@ -2,7 +2,7 @@ import { Component, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, EventEm
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IKlesFieldConfig, IKlesValidator, KlesDynamicFormComponent } from '@3kles/kles-material-dynamicforms';
 import { IKlesDynamicFormDataDialog } from './dynamicform-dialog.model';
-import { AsyncValidatorFn, FormGroup, ValidatorFn } from '@angular/forms';
+import { AsyncValidatorFn, UntypedFormGroup, ValidatorFn } from '@angular/forms';
 
 @Component({
     templateUrl: './dynamicform-dialog.component.html',
@@ -48,7 +48,7 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
         this.onLoadedForm.emit(true);
     }
 
-    getForm(): FormGroup {
+    getForm(): UntypedFormGroup {
         return this.dynamicForm.form;
     }
 
