@@ -9,4 +9,5 @@ export interface IKlesDynamicFormDataDialog {
     direction?: 'column' | 'row';
     buttonCancel?: string;
     buttonOK?: string;
+    title?: string;
 }
