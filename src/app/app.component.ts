@@ -18,14 +18,12 @@ export class AppComponent {
   constructor(protected dialog: MatDialog) {
     this.fields = [
       {
-        type: 'checkbox',
         label: 'checkbox',
         name: '#select',
         component: KlesFormCheckboxComponent,
         indeterminate: false,
       },
       {
-        type: 'input',
         component: KlesFormInputComponent,
         placeholder: 'beginvalue',
         inputType: 'number',
@@ -45,8 +43,6 @@ export class AppComponent {
         ]
       },
       {
-
-        type: 'input',
         component: KlesFormInputComponent,
         placeholder: 'endvalue',
         inputType: 'number',
@@ -65,7 +61,6 @@ export class AppComponent {
         ]
       },
       {
-        type: 'color',
         component: KlesFormColorComponent,
         placeholder: 'color',
         name: 'color',
