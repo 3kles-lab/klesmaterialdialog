@@ -10,6 +10,7 @@ import { AsyncValidatorFn, FormGroup, ValidatorFn } from '@angular/forms';
 })
 export class KlesDynamicFormDialogComponent implements AfterViewInit {
 
+    title: string;
     fields: IKlesFieldConfig[];
     validators: IKlesValidator<ValidatorFn>[] = [];
     asyncValidators: IKlesValidator<AsyncValidatorFn>[] = [];
@@ -34,6 +35,7 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
         this.fields = data.fields;
         if (data.buttonCancel) this.buttonCancel = data.buttonCancel;
         if (data.buttonOK) this.buttonOK = data.buttonOK;
+        if (data.title) this.title = data.title;
 
     }
 
