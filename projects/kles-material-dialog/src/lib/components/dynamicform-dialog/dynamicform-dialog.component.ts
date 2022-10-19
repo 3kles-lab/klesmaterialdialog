@@ -58,9 +58,8 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
     onOK() {
         this.item = {
             ...this.item,
-            ...this.dynamicForm.form.value
+            ...this.dynamicForm.form.getRawValue()
         };
-        console.log(this.item)
         this.dialogRef.close({ item: this.item });
     }
 }
