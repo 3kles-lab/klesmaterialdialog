@@ -2,7 +2,8 @@ import { Component, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, EventEm
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IKlesFieldConfig, IKlesValidator, KlesDynamicFormComponent } from '@3kles/kles-material-dynamicforms';
 import { IKlesDynamicFormDataDialog } from './dynamicform-dialog.model';
-import { AsyncValidatorFn, UntypedFormGroup, ValidatorFn } from '@angular/forms';
+import { AsyncValidatorFn, FormGroup, UntypedFormGroup, ValidatorFn } from '@angular/forms';
+import { BehaviorSubject, EMPTY, Observable, of } from 'rxjs';
 
 @Component({
     templateUrl: './dynamicform-dialog.component.html',
@@ -19,6 +20,11 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
     buttonCancel = 'Cancel';
     buttonOK = 'OK';
     onLoadedForm = new EventEmitter();
+
+    pending = new BehaviorSubject<boolean>(false);
+    error$ = new BehaviorSubject<any>(null);
+
+    beforeClose: (item: any, form: FormGroup) => Observable<any> = () => of({});
 
     @ViewChild(KlesDynamicFormComponent, { static: true }) dynamicForm: KlesDynamicFormComponent;
 
@@ -37,6 +43,9 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
         if (data.buttonOK) this.buttonOK = data.buttonOK;
         if (data.title) this.title = data.title;
 
+        if(data.beforeClose){
+            this.beforeClose = data.beforeClose;
+        }
     }
 
     ngAfterViewInit(): void {
@@ -56,11 +65,22 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
         this.dialogRef.close('close');
     }
     onOK() {
-        this.item = {
-            ...this.item,
-            ...this.dynamicForm.form.getRawValue()
-        };
-        this.dialogRef.close({ item: this.item });
+        this.pending.next(true);
+        this.beforeClose(this.item, this.dynamicForm.form)
+        .subscribe({
+            next: (response) => {
+                this.pending.next(false);
+                this.dialogRef.close({ item: this.item, 
+                    form: this.dynamicForm.form.getRawValue(),
+                    ...response && {response}
+                });
+            },
+            error: (e) => {
+                console.log('error', e)
+                this.error$.next(e)
+                this.pending.next(false);
+            }
+        })
     }
 }
 

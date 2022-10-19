@@ -8,10 +8,17 @@
             [asyncValidators]="asyncValidators">
         </app-kles-dynamic-form>
 
+        <mat-error *ngIf="error$ | async as error">{{error?.message}}</mat-error>
+            
+
     </div>
     <div mat-dialog-actions align="center">
         <button mat-button color="primary" (click)="onClose()">{{buttonCancel}}</button>
-        <button mat-raised-button color="primary" [disabled]="!dynamicForm.form.valid"
-            (click)="onOK()">{{buttonOK}}</button>
+        <button mat-raised-button color="primary" [disabled]="!dynamicForm.form.valid || (pending | async)"
+            (click)="onOK()">{{buttonOK}}
+            <mat-icon *ngIf="pending | async"><mat-spinner color="primary" diameter="20"></mat-spinner></mat-icon>
+        </button>
+
+
     </div>
 </div>

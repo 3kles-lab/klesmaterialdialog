@@ -1,5 +1,6 @@
 import { IKlesFieldConfig, IKlesValidator } from "@3kles/kles-material-dynamicforms";
-import { AsyncValidatorFn, ValidatorFn } from "@angular/forms";
+import { AsyncValidatorFn, FormGroup, ValidatorFn } from "@angular/forms";
+import { Observable } from "rxjs";
 
 export interface IKlesDynamicFormDataDialog {
     fields: IKlesFieldConfig[];
@@ -10,4 +11,5 @@ export interface IKlesDynamicFormDataDialog {
     buttonCancel?: string;
     buttonOK?: string;
     title?: string;
+    beforeClose?: (item: any, form: FormGroup) => Observable<any>;
 }
