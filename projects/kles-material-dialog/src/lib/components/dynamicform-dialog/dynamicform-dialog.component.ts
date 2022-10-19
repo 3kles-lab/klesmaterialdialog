@@ -76,7 +76,7 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
                 });
             },
             error: (e) => {
-                console.log('error', e)
+                console.error(e);
                 this.error$.next(e)
                 this.pending.next(false);
             }
