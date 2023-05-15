@@ -1,6 +1,11 @@
+<div mat-dialog-title *ngIf="title">
+    <mat-icon *ngIf="icon" [fontIcon]="icon"></mat-icon>
+    {{title}}
+</div>
+
 <mat-dialog-content>
     {{message}}
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-<button mat-raised-button color="primary" mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+    <button mat-raised-button color="primary" mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
 </mat-dialog-actions>

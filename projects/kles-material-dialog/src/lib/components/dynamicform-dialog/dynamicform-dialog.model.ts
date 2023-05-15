@@ -11,5 +11,6 @@ export interface IKlesDynamicFormDataDialog {
     buttonCancel?: string;
     buttonOK?: string;
     title?: string;
+    icon?: string;
     beforeClose?: (item: any, form: FormGroup) => Observable<any>;
 }

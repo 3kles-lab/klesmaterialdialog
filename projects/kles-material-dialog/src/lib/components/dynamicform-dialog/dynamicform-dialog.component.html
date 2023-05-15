@@ -1,6 +1,9 @@
 <div mat-dialog>
 
-    <div mat-dialog-title *ngIf="title">{{title}}</div>
+    <div mat-dialog-title *ngIf="title">
+        <mat-icon *ngIf="icon" [fontIcon]="icon"></mat-icon>
+        {{title}}
+    </div>
 
     <div mat-dialog-content>
 
@@ -9,7 +12,7 @@
         </app-kles-dynamic-form>
 
         <mat-error *ngIf="error$ | async as error">{{error?.message}}</mat-error>
-            
+
 
     </div>
     <div mat-dialog-actions align="center">

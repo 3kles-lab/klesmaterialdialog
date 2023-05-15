@@ -1,4 +1,7 @@
-<div mat-dialog-title *ngIf="title">{{title}}</div>
+<div mat-dialog-title *ngIf="title">
+    <mat-icon *ngIf="icon" [fontIcon]="icon"></mat-icon>
+    {{title}}
+</div>
 
 <mat-dialog-content>
     <p class="message">

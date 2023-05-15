@@ -7,7 +7,7 @@ import { BehaviorSubject, EMPTY, Observable, of } from 'rxjs';
 
 @Component({
     templateUrl: './dynamicform-dialog.component.html',
-    styles: [],
+    styles:['mat-icon { vertical-align: middle; }']
 })
 export class KlesDynamicFormDialogComponent implements AfterViewInit {
 
@@ -20,7 +20,7 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
     buttonCancel = 'Cancel';
     buttonOK = 'OK';
     onLoadedForm = new EventEmitter();
-
+    icon: string;
     pending = new BehaviorSubject<boolean>(false);
     error$ = new BehaviorSubject<any>(null);
 
@@ -39,11 +39,12 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
         }
         data.fields.forEach(f => f.value = this.item[f.name]);
         this.fields = data.fields;
+        this.icon = data.icon;
         if (data.buttonCancel) this.buttonCancel = data.buttonCancel;
         if (data.buttonOK) this.buttonOK = data.buttonOK;
         if (data.title) this.title = data.title;
 
-        if(data.beforeClose){
+        if (data.beforeClose) {
             this.beforeClose = data.beforeClose;
         }
     }
@@ -67,20 +68,21 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
     onOK() {
         this.pending.next(true);
         this.beforeClose(this.item, this.dynamicForm.form)
-        .subscribe({
-            next: (response) => {
-                this.pending.next(false);
-                this.dialogRef.close({ item: this.item, 
-                    form: this.dynamicForm.form.getRawValue(),
-                    ...response && {response}
-                });
-            },
-            error: (e) => {
-                console.error(e);
-                this.error$.next(e)
-                this.pending.next(false);
-            }
-        })
+            .subscribe({
+                next: (response) => {
+                    this.pending.next(false);
+                    this.dialogRef.close({
+                        item: this.item,
+                        form: this.dynamicForm.form.getRawValue(),
+                        ...response && { response }
+                    });
+                },
+                error: (e) => {
+                    console.error(e);
+                    this.error$.next(e)
+                    this.pending.next(false);
+                }
+            })
     }
 }
 
