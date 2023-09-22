@@ -1,7 +1,7 @@
 import { IKlesFieldConfig, KlesDynamicFormComponent, KlesFormCheckboxComponent, KlesFormColorComponent, KlesFormInputComponent, KlesFormLabelComponent } from '@3kles/kles-material-dynamicforms';
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
-import { MatLegacyDialog as MatDialog, MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AlertDialogComponent, ConfirmDialogComponent, SpinnerDialogComponent } from 'kles-material-dialog';
 import { IKlesDynamicFormDataDialog, KlesDynamicFormDialogComponent } from 'projects/kles-material-dialog/src/public-api';
 import { delay, of, switchMap, throwError } from 'rxjs';
