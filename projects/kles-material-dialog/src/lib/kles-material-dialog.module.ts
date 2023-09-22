@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './modules/material.module';
 import { AlertDialogComponent } from './components/alert-dialog/alert-dialog.component';
@@ -9,7 +8,7 @@ import { SpinnerDialogComponent } from './components/spinner-dialog/spinner-dial
 import { KlesDynamicFormDialogComponent } from './components/dynamicform-dialog/dynamicform-dialog.component';
 import { KlesMaterialDynamicformsModule } from '@3kles/kles-material-dynamicforms';
 import { DialogService } from './services/dialog.service';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 const COMPONENTS = [
   AlertDialogComponent,
@@ -24,7 +23,6 @@ const SERVICES = [DialogService]
   declarations: [COMPONENTS],
   imports: [
     CommonModule,
-    FlexLayoutModule,
     MaterialModule,
     RouterModule,
     KlesMaterialDynamicformsModule,
