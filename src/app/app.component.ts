@@ -100,6 +100,7 @@ export class AppComponent {
     const dialogRef = this.dialog.open(AlertDialogComponent, {
       width: '350px',
       data: {
+        title: "Title",
         message: "Message",
         cancelButtonText: "cancel.text"
       }
