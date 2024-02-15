@@ -1,27 +1,51 @@
-# TestLib
+# @3kles/kles-material-dialog
+@3kles/kles-material-dialog is a angular library to create dialog.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.0.
+## Changelog
 
-## Development server
+Check out the [changelog](./CHANGELOG.md) to check all the latest changes.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Models
 
-## Code scaffolding
+### Components
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- <b>AlertDialogComponent</b> -> Component to create an alert dialog
+- <b>ConfirmDialogComponent</b> -> Component to create a confirm dialog
+- <b>SpinnerDialogComponent</b> -> Component to create a spinner dialog
+- <b>KlesDynamicFormDialogComponent</b> -> Component to create a dialog with a form
 
-## Build
+## Install
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### npm
 
-## Running unit tests
+```
+npm install --save @3kles/kles-material-dialog
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## How to use
 
-## Running end-to-end tests
+```javascript
+constructor(protected dialog: MatDialog) {}
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+open(): void {
+    this.dialog.open(DialogComponent, {
+        data: {
+            ...
+        },
+        ...
+    });
+}
+```
 
-## Further help
+Check the [`documentation`](https://doc.3kles-consulting.com) to use component and directive.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Tests
+
+```
+npm install
+npm test
+```
+
+## License
+
+[`MIT`](./LICENSE.md)
