@@ -1,24 +1,51 @@
-# KlesMaterialDialog
+# @3kles/kles-material-dialog
+@3kles/kles-material-dialog is a angular library to create dialog.
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.
+## Changelog
 
-## Code scaffolding
+Check out the [changelog](./CHANGELOG.md) to check all the latest changes.
 
-Run `ng generate component component-name --project kles-material-dialog` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project kles-material-dialog`.
-> Note: Don't forget to add `--project kles-material-dialog` or else it will be added to the default project in your `angular.json` file. 
+## Models
 
-## Build
+### Components
 
-Run `ng build kles-material-dialog` to build the project. The build artifacts will be stored in the `dist/` directory.
+- <b>AlertDialogComponent</b> -> Component to create an alert dialog
+- <b>ConfirmDialogComponent</b> -> Component to create a confirm dialog
+- <b>SpinnerDialogComponent</b> -> Component to create a spinner dialog
+- <b>KlesDynamicFormDialogComponent</b> -> Component to create a dialog with a form
 
-## Publishing
+## Install
 
-After building your library with `ng build kles-material-dialog`, go to the dist folder `cd dist/kles-material-dialog` and run `npm publish`.
+### npm
 
-## Running unit tests
+```
+npm install --save @3kles/kles-material-dialog
+```
 
-Run `ng test kles-material-dialog` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## How to use
 
-## Further help
+```javascript
+constructor(protected dialog: MatDialog) {}
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+open(): void {
+    this.dialog.open(DialogComponent, {
+        data: {
+            ...
+        },
+        ...
+    });
+}
+```
+
+Check the [`documentation`](https://doc.3kles-consulting.com/#/material/dialog) to use component and directive.
+
+## Tests
+
+```
+npm install
+npm test
+```
+
+## License
+
+[`MIT`](./LICENSE.md)
