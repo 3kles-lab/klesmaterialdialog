@@ -1,4 +1,4 @@
-import { Component, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, EventEmitter } from '@angular/core';
+import { Component, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, EventEmitter, ElementRef } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IKlesFieldConfig, IKlesValidator, KlesDynamicFormComponent } from '@3kles/kles-material-dynamicforms';
 import { IKlesDynamicFormDataDialog } from './dynamicform-dialog.model';
@@ -7,9 +7,11 @@ import { BehaviorSubject, EMPTY, Observable, of } from 'rxjs';
 
 @Component({
     templateUrl: './dynamicform-dialog.component.html',
-    styles:['mat-icon { vertical-align: middle; }']
+    styles: ['mat-icon { vertical-align: middle; }']
 })
 export class KlesDynamicFormDialogComponent implements AfterViewInit {
+
+    @ViewChild("errorElem") errorElemRef: ElementRef;
 
     title: string;
     fields: IKlesFieldConfig[];
@@ -81,6 +83,8 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
                     console.error(e);
                     this.error$.next(e)
                     this.pending.next(false);
+                    this.ref.markForCheck();
+                    setTimeout(() => { this.errorElemRef?.nativeElement.scrollIntoView({ behavior: "smooth", block: "start" }); });
                 }
             })
     }
