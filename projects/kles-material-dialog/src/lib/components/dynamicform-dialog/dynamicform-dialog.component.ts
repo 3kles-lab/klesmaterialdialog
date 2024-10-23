@@ -1,15 +1,18 @@
-import { Component, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, EventEmitter, ElementRef } from '@angular/core';
+import { Component, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, EventEmitter, ElementRef, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { IKlesFieldConfig, IKlesValidator, KlesDynamicFormComponent } from '@3kles/kles-material-dynamicforms';
 import { IKlesDynamicFormDataDialog } from './dynamicform-dialog.model';
 import { AsyncValidatorFn, FormGroup, UntypedFormGroup, ValidatorFn } from '@angular/forms';
 import { BehaviorSubject, EMPTY, Observable, of } from 'rxjs';
+import { KlesDialogAbstractComponent } from '../kles-dialog.component';
 
 @Component({
     templateUrl: './dynamicform-dialog.component.html',
-    styles: ['mat-icon { vertical-align: middle; }']
+    // styles: ['mat-icon { vertical-align: middle; }'],
+    styleUrls: ['../../styles/title.style.scss', '../../styles/fullsize.style.scss'],
+    encapsulation: ViewEncapsulation.None
 })
-export class KlesDynamicFormDialogComponent implements AfterViewInit {
+export class KlesDynamicFormDialogComponent extends KlesDialogAbstractComponent implements AfterViewInit {
 
     @ViewChild("errorElem") errorElemRef: ElementRef;
 
@@ -33,6 +36,7 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
     constructor(public dialogRef: MatDialogRef<KlesDynamicFormDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: IKlesDynamicFormDataDialog,
         private ref: ChangeDetectorRef) {
+        super(dialogRef);
         this.item = (data.item) ? data.item : {};
         if (data.validators) this.validators = data.validators;
         if (data.asyncValidators) this.asyncValidators = data.asyncValidators;
@@ -45,6 +49,13 @@ export class KlesDynamicFormDialogComponent implements AfterViewInit {
         if (data.buttonCancel) this.buttonCancel = data.buttonCancel;
         if (data.buttonOK) this.buttonOK = data.buttonOK;
         if (data.title) this.title = data.title;
+        if (data.option) {
+            if (data.option.fullsize) {
+                this.setFullsize();
+            }
+            this.fullsizeButton.set(data.option.fullsizeButton || false)
+        }
+
 
         if (data.beforeClose) {
             this.beforeClose = data.beforeClose;

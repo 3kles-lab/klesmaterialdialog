@@ -1,36 +1,49 @@
-<div mat-dialog>
+<div class="title">
     @if (title) {
     <div mat-dialog-title>
         @if (icon) {
-        <mat-icon [fontIcon]="icon"></mat-icon>
+        <mat-icon class="icon-title" [fontIcon]="icon"></mat-icon>
         }
         {{title}}
+
     </div>
     }
 
-    <div mat-dialog-content>
-        <app-kles-dynamic-form [direction]="direction" [fields]="fields" [validators]="validators"
-            [asyncValidators]="asyncValidators">
-        </app-kles-dynamic-form>
-
-        @if (error$ | async; as error) {
-            <div #errorElem>
-                <mat-error>{{ error?.message }}</mat-error>
-            </div>
+    @if(fullsizeButton()){
+    <button class="fullsize-button" mat-icon-button (click)="toggleFullsize()">
+        @if(fullsize()){
+        <mat-icon>fullscreen_exit</mat-icon>
+        }@else{
+        <mat-icon>fullscreen</mat-icon>
         }
 
-    </div>
-
-    <div mat-dialog-actions align="center">
-        <button mat-button color="primary" (click)="onClose()">{{buttonCancel}}</button>
-        <button mat-raised-button color="primary" [disabled]="!dynamicForm.form.valid || (pending | async)"
-            (click)="onOK()">
-            {{buttonOK}}
-            @if (pending | async) {
-            <mat-icon><mat-spinner color="primary" diameter="20"></mat-spinner></mat-icon>
-            }
-        </button>
-
-    </div>
+    </button>
+    }
 
 </div>
+
+
+<div mat-dialog-content>
+    <app-kles-dynamic-form [direction]="direction" [fields]="fields" [validators]="validators"
+        [asyncValidators]="asyncValidators">
+    </app-kles-dynamic-form>
+
+    @if (error$ | async; as error) {
+    <div #errorElem>
+        <mat-error>{{ error?.message }}</mat-error>
+    </div>
+    }
+
+</div>
+
+<mat-dialog-actions align="center">
+    <button mat-button color="primary" (click)="onClose()">{{buttonCancel}}</button>
+    <button mat-raised-button color="primary" [disabled]="!dynamicForm.form.valid || (pending | async)"
+        (click)="onOK()">
+        {{buttonOK}}
+        @if (pending | async) {
+        <mat-icon><mat-spinner color="primary" diameter="20"></mat-spinner></mat-icon>
+        }
+    </button>
+
+</mat-dialog-actions>

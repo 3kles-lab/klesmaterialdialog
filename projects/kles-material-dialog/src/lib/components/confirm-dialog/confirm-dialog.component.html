@@ -1,11 +1,27 @@
-@if (title) {
+<div class="title">
+    @if (title) {
     <div mat-dialog-title>
         @if (icon) {
-            <mat-icon [fontIcon]="icon"></mat-icon>
+        <mat-icon class="icon-title" [fontIcon]="icon"></mat-icon>
         }
         {{title}}
+
     </div>
-}
+    }
+
+    @if(fullsizeButton()){
+    <button class="fullsize-button" mat-icon-button (click)="toggleFullsize()">
+        @if(fullsize()){
+        <mat-icon>fullscreen_exit</mat-icon>
+        }@else{
+        <mat-icon>fullscreen</mat-icon>
+        }
+
+    </button>
+    }
+
+</div>
+
 
 <mat-dialog-content>
     <p class="message">

@@ -8,3 +8,4 @@ export * from './lib/components/confirm-dialog/confirm-dialog.component';
 export * from './lib/components/spinner-dialog/spinner-dialog.component';
 export * from './lib/components/dynamicform-dialog/dynamicform-dialog.component';
 export * from './lib/components/dynamicform-dialog/dynamicform-dialog.model';
+export * from './lib/components/kles-dialog.component';

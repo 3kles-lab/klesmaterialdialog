@@ -12,5 +12,9 @@ export interface IKlesDynamicFormDataDialog {
     buttonOK?: string;
     title?: string;
     icon?: string;
+    option?: {
+        fullsizeButton?: boolean;
+        fullsize?: boolean;
+    }
     beforeClose?: (item: any, form: FormGroup) => Observable<any>;
 }

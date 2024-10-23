@@ -4,7 +4,7 @@ import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AlertDialogComponent, ConfirmDialogComponent, SpinnerDialogComponent } from 'kles-material-dialog';
 import { IKlesDynamicFormDataDialog, KlesDynamicFormDialogComponent } from 'projects/kles-material-dialog/src/public-api';
-import { delay, of, switchMap, throwError } from 'rxjs';
+import { delay, map, of, switchMap, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -62,22 +62,113 @@ export class AppComponent {
         ]
       },
       {
-        component: KlesFormColorComponent,
-        placeholder: 'color',
-        name: 'color',
+        component: KlesFormInputComponent,
+        placeholder: 'endvalue',
+        inputType: 'number',
+        name: 'endvalue',
         validations: [
           {
             name: 'required',
             validator: Validators.required,
-            message: 'statusSettings.color.validator.required'
+            message: 'statusSettings.endValue.validator.required'
           },
           {
             name: 'pattern',
-            validator: Validators.pattern('^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$'),
-            message: 'statusSettings.color.validator.notValid'
+            validator: Validators.pattern('^([0-9][0-9]{0,2}|1000)$'),
+            message: 'statusSettings.endValue.validator.notValid'
           }
         ]
-      }
+      },
+      {
+        component: KlesFormInputComponent,
+        placeholder: 'endvalue',
+        inputType: 'number',
+        name: 'endvalue',
+        validations: [
+          {
+            name: 'required',
+            validator: Validators.required,
+            message: 'statusSettings.endValue.validator.required'
+          },
+          {
+            name: 'pattern',
+            validator: Validators.pattern('^([0-9][0-9]{0,2}|1000)$'),
+            message: 'statusSettings.endValue.validator.notValid'
+          }
+        ]
+      },
+      {
+        component: KlesFormInputComponent,
+        placeholder: 'endvalue',
+        inputType: 'number',
+        name: 'endvalue',
+        validations: [
+          {
+            name: 'required',
+            validator: Validators.required,
+            message: 'statusSettings.endValue.validator.required'
+          },
+          {
+            name: 'pattern',
+            validator: Validators.pattern('^([0-9][0-9]{0,2}|1000)$'),
+            message: 'statusSettings.endValue.validator.notValid'
+          }
+        ]
+      },
+      {
+        component: KlesFormInputComponent,
+        placeholder: 'endvalue',
+        inputType: 'number',
+        name: 'endvalue',
+        validations: [
+          {
+            name: 'required',
+            validator: Validators.required,
+            message: 'statusSettings.endValue.validator.required'
+          },
+          {
+            name: 'pattern',
+            validator: Validators.pattern('^([0-9][0-9]{0,2}|1000)$'),
+            message: 'statusSettings.endValue.validator.notValid'
+          }
+        ]
+      },
+      {
+        component: KlesFormInputComponent,
+        placeholder: 'endvalue',
+        inputType: 'number',
+        name: 'endvalue',
+        validations: [
+          {
+            name: 'required',
+            validator: Validators.required,
+            message: 'statusSettings.endValue.validator.required'
+          },
+          {
+            name: 'pattern',
+            validator: Validators.pattern('^([0-9][0-9]{0,2}|1000)$'),
+            message: 'statusSettings.endValue.validator.notValid'
+          }
+        ]
+      },
+      {
+        component: KlesFormInputComponent,
+        placeholder: 'endvalue',
+        inputType: 'number',
+        name: 'endvalue',
+        validations: [
+          {
+            name: 'required',
+            validator: Validators.required,
+            message: 'statusSettings.endValue.validator.required'
+          },
+          {
+            name: 'pattern',
+            validator: Validators.pattern('^([0-9][0-9]{0,2}|1000)$'),
+            message: 'statusSettings.endValue.validator.notValid'
+          }
+        ]
+      },
     ];
 
     this.item = { beginvalue: 11, endvalue: 10, color: '#ff67' };
@@ -90,7 +181,13 @@ export class AppComponent {
       data: {
         message: "Message",
         confirmButtonText: "yes.text",
-        cancelButtonText: "cancel.text"
+        cancelButtonText: "cancel.text",
+        title:'aaaa',
+        icon: 'warning',
+        option: {
+          fullsize: false,
+          fullsizeButton: true
+        },
       }
     });
     return dialogRef;
@@ -102,7 +199,12 @@ export class AppComponent {
       data: {
         title: "Title",
         message: "Message",
-        cancelButtonText: "cancel.text"
+        cancelButtonText: "cancel.text",
+        icon: 'warning',
+        option: {
+          fullsize: false,
+          fullsizeButton: true
+        },
       }
     });
     return dialogRef;
@@ -127,8 +229,16 @@ export class AppComponent {
         //direction: 'row',
         buttonCancel: 'Annuler',
         buttonOK: 'Confirmer',
+        icon: 'warning',
+        option: {
+          fullsize: false,
+          fullsizeButton: true
+        },
         beforeClose: (item, form) => {
-          return of(form.value).pipe(delay(2000))
+          return of(form.value).pipe(delay(1000), switchMap(() => {
+            return throwError(() => ({ message: 'aaaaa' }))
+          }))
+
         }
       } as IKlesDynamicFormDataDialog
 

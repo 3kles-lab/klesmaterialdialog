@@ -1,0 +1,11 @@
+.dialog-fullsize{
+    max-width: none !important;
+
+    .mat-mdc-dialog-content {
+        max-height: none !important;
+    }
+}
+
+.fullsize-button {
+    margin-left: auto;
+}
