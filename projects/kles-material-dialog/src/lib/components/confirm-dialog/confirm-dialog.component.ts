@@ -7,8 +7,8 @@ import { KlesDialogAbstractComponent } from '../kles-dialog.component';
     templateUrl: './confirm-dialog.component.html',
     styleUrls: [
         './confirm-dialog.component.scss',
-        '../../styles/title.style.scss',
-        '../../styles/fullsize.style.scss'
+        '../../../../styles/title.style.scss',
+        '../../../../styles/fullsize.style.scss'
     ],
     encapsulation: ViewEncapsulation.None
 })

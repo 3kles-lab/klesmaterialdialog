@@ -10,7 +10,7 @@
     }
 
     @if(fullsizeButton()){
-    <button class="fullsize-button" mat-icon-button (click)="toggleFullsize()">
+    <button class="fullsize-button" mat-icon-button  type="button" (click)="toggleFullsize()">
         @if(fullsize()){
         <mat-icon>fullscreen_exit</mat-icon>
         }@else{
