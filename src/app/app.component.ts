@@ -4,7 +4,8 @@ import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AlertDialogComponent, ConfirmDialogComponent, SpinnerDialogComponent } from 'kles-material-dialog';
 import { IKlesDynamicFormDataDialog, KlesDynamicFormDialogComponent } from 'projects/kles-material-dialog/src/public-api';
-import { delay, map, of, switchMap, throwError } from 'rxjs';
+import { of, throwError } from 'rxjs';
+import { delay, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -61,7 +62,7 @@ export class AppComponent {
           }
         ]
       },
-      {
+      /*{
         component: KlesFormInputComponent,
         placeholder: 'endvalue',
         inputType: 'number',
@@ -168,7 +169,7 @@ export class AppComponent {
             message: 'statusSettings.endValue.validator.notValid'
           }
         ]
-      },
+      },*/
     ];
 
     this.item = { beginvalue: 11, endvalue: 10, color: '#ff67' };
@@ -182,7 +183,7 @@ export class AppComponent {
         message: "Message",
         confirmButtonText: "yes.text",
         cancelButtonText: "cancel.text",
-        title:'aaaa',
+        title: 'aaaa',
         icon: 'warning',
         option: {
           fullsize: false,
