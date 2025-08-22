@@ -2,6 +2,7 @@ import { Component, Inject, ViewEncapsulation } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { KlesDialogAbstractComponent } from '../kles-dialog.component';
 import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     templateUrl: './alert-dialog.component.html',
@@ -12,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
     encapsulation: ViewEncapsulation.None,
     standalone: true,
     imports: [
+        MatButtonModule,
         MatIconModule,
         MatDialogModule
     ]

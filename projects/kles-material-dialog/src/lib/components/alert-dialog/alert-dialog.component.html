@@ -4,28 +4,25 @@
         @if (icon) {
         <mat-icon class="icon-title" [fontIcon]="icon"></mat-icon>
         }
-        {{title}}
 
+        {{ title }}
+
+        @if (fullsizeButton()) {
+        <button class="fullsize-button" mat-icon-button type="button" (click)="toggleFullsize()">
+            @if (fullsize()){
+            <mat-icon>fullscreen_exit</mat-icon>
+            } @else{
+            <mat-icon>fullscreen</mat-icon>
+            }
+        </button>
+        }
     </div>
     }
-
-    @if(fullsizeButton()){
-    <button class="fullsize-button" mat-icon-button  type="button" (click)="toggleFullsize()">
-        @if(fullsize()){
-        <mat-icon>fullscreen_exit</mat-icon>
-        }@else{
-        <mat-icon>fullscreen</mat-icon>
-        }
-
-    </button>
-    }
-
 </div>
 
-
 <mat-dialog-content>
-    {{message}}
+    {{ message }}
 </mat-dialog-content>
 <mat-dialog-actions align="end">
-    <button mat-raised-button color="primary" mat-dialog-close tabindex="-1">{{cancelButtonText}}</button>
+    <button mat-flat-button color="primary" mat-dialog-close tabindex="-1">{{ cancelButtonText }}</button>
 </mat-dialog-actions>

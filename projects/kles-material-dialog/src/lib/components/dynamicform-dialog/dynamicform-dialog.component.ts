@@ -2,13 +2,14 @@ import { Component, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, EventEm
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
 import { IKlesFieldConfig, IKlesValidator, KlesDynamicFormComponent, KlesMaterialDynamicformsModule } from '@3kles/kles-material-dynamicforms';
 import { IKlesDynamicFormDataDialog } from './dynamicform-dialog.model';
-import { AsyncValidatorFn, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormGroup, ValidatorFn } from '@angular/forms';
+import { AsyncValidatorFn, FormGroup, UntypedFormGroup, ValidatorFn } from '@angular/forms';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { KlesDialogAbstractComponent } from '../kles-dialog.component';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
     templateUrl: './dynamicform-dialog.component.html',
@@ -17,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     standalone: true,
     imports: [
         CommonModule,
+        MatButtonModule,
         MatProgressSpinnerModule,
         MatIconModule,
         MatDialogModule,

@@ -1,7 +1,9 @@
-import { IKlesFieldConfig, KlesDynamicFormComponent, KlesFormCheckboxComponent, KlesFormColorComponent, KlesFormInputComponent, KlesFormLabelComponent } from '@3kles/kles-material-dynamicforms';
+import { IKlesFieldConfig, KlesFormCheckboxComponent, KlesFormInputComponent } from '@3kles/kles-material-dynamicforms';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { RouterModule } from '@angular/router';
 import { AlertDialogComponent, ConfirmDialogComponent, SpinnerDialogComponent } from 'kles-material-dialog';
 import { IKlesDynamicFormDataDialog, KlesDynamicFormDialogComponent } from 'projects/kles-material-dialog/src/public-api';
 import { of, throwError } from 'rxjs';
@@ -11,7 +13,11 @@ import { delay, switchMap } from 'rxjs/operators';
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
-    standalone: false
+    standalone: true,
+    imports: [
+      RouterModule,
+      CommonModule
+    ]
 })
 export class AppComponent {
   title = 'testLib';
@@ -237,7 +243,7 @@ export class AppComponent {
           fullsizeButton: true
         },
         beforeClose: (item, form) => {
-          return of(form.value).pipe(delay(1000), switchMap(() => {
+          return of(form.value).pipe(delay(1000000), switchMap(() => {
             return throwError(() => ({ message: 'aaaaa' }))
           }))
 

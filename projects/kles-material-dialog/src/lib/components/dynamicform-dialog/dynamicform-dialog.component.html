@@ -4,28 +4,24 @@
         @if (icon) {
         <mat-icon class="icon-title" [fontIcon]="icon"></mat-icon>
         }
-        {{title}}
 
+        {{ title }}
+
+        @if (fullsizeButton()) {
+        <button class="fullsize-button" mat-icon-button type="button" (click)="toggleFullsize()">
+            @if (fullsize()) {
+            <mat-icon>fullscreen_exit</mat-icon>
+            } @else {
+            <mat-icon>fullscreen</mat-icon>
+            }
+        </button>
+        }
     </div>
     }
-
-    @if(fullsizeButton()){
-    <button class="fullsize-button" mat-icon-button type="button" (click)="toggleFullsize()">
-        @if(fullsize()){
-        <mat-icon>fullscreen_exit</mat-icon>
-        }@else{
-        <mat-icon>fullscreen</mat-icon>
-        }
-
-    </button>
-    }
-
 </div>
 
-
 <div mat-dialog-content>
-    <app-kles-dynamic-form [direction]="direction" [fields]="fields" [validators]="validators"
-        [asyncValidators]="asyncValidators">
+    <app-kles-dynamic-form [direction]="direction" [fields]="fields" [validators]="validators" [asyncValidators]="asyncValidators">
     </app-kles-dynamic-form>
 
     @if (error$ | async; as error) {
@@ -33,17 +29,15 @@
         <mat-error>{{ error?.message }}</mat-error>
     </div>
     }
-
 </div>
 
 <mat-dialog-actions align="center">
-    <button mat-button color="primary" (click)="onClose()">{{buttonCancel}}</button>
-    <button mat-raised-button color="primary" [disabled]="!dynamicForm.form.valid || (pending | async)"
-        (click)="onOK()">
-        {{buttonOK}}
+    <button mat-button color="primary" (click)="onClose()">{{ buttonCancel }}</button>
+    <button mat-flat-button color="primary" [disabled]="!dynamicForm.form.valid || (pending | async)" (click)="onOK()">
+        {{ buttonOK }}
+
         @if (pending | async) {
-        <mat-icon><mat-spinner color="primary" diameter="20"></mat-spinner></mat-icon>
+        <mat-icon><mat-spinner color="primary" diameter="18"></mat-spinner></mat-icon>
         }
     </button>
-
 </mat-dialog-actions>
