@@ -8,7 +8,6 @@ import { SpinnerDialogComponent } from './components/spinner-dialog/spinner-dial
 import { KlesDynamicFormDialogComponent } from './components/dynamicform-dialog/dynamicform-dialog.component';
 import { KlesMaterialDynamicformsModule } from '@3kles/kles-material-dynamicforms';
 import { DialogService } from './services/dialog.service';
-import { TranslateModule } from '@ngx-translate/core';
 
 const COMPONENTS = [
     AlertDialogComponent,
@@ -25,7 +24,6 @@ const SERVICES = [DialogService];
         MaterialModule,
         RouterModule,
         KlesMaterialDynamicformsModule,
-        TranslateModule,
         COMPONENTS
     ],
     providers: [SERVICES],

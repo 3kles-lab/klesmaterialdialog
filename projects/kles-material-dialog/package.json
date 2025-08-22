@@ -1,6 +1,6 @@
 {
   "name": "@3kles/kles-material-dialog",
-  "version": "19.0.0",
+  "version": "19.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/3kles-lab/klesmaterialdialog"
@@ -28,8 +28,7 @@
     "@angular/platform-browser": "^19.2.14",
     "@angular/platform-browser-dynamic": "^19.2.14",
     "@angular/router": "^19.2.14",
-    "@ngx-translate/core": "^15.0.0",
-    "ngx-color-picker": "^14.0.0",
+    "ngx-color-picker": "^19.0.0",
     "rxjs": "^7.8.0",
     "zone.js": "~0.15.1"
   },
