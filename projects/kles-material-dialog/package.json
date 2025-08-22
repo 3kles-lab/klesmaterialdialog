@@ -1,6 +1,6 @@
 {
   "name": "@3kles/kles-material-dialog",
-  "version": "18.0.3",
+  "version": "19.0.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/3kles-lab/klesmaterialdialog"
@@ -17,21 +17,21 @@
   },
   "homepage": "https://github.com/3kles-lab/klesmaterialdialog",
   "peerDependencies": {
-    "@3kles/kles-material-dynamicforms": "^18.0.1",
-    "@angular/animations": "^18.2.13",
-    "@angular/cdk": "^18.2.14",
-    "@angular/common": "^18.2.13",
-    "@angular/compiler": "^18.2.13",
-    "@angular/core": "^18.2.13",
-    "@angular/forms": "^18.2.13",
-    "@angular/material": "^18.2.14",
-    "@angular/platform-browser": "^18.2.13",
-    "@angular/platform-browser-dynamic": "^18.2.13",
-    "@angular/router": "^18.2.13",
+    "@3kles/kles-material-dynamicforms": "^19.1.0",
+    "@angular/animations": "^19.2.14",
+    "@angular/cdk": "^19.2.19",
+    "@angular/common": "^19.2.14",
+    "@angular/compiler": "^19.2.14",
+    "@angular/core": "^19.2.14",
+    "@angular/forms": "^19.2.14",
+    "@angular/material": "^19.2.19",
+    "@angular/platform-browser": "^19.2.14",
+    "@angular/platform-browser-dynamic": "^19.2.14",
+    "@angular/router": "^19.2.14",
     "@ngx-translate/core": "^15.0.0",
     "ngx-color-picker": "^14.0.0",
-    "rxjs": "~6.5.4",
-    "zone.js": "~0.14.2"
+    "rxjs": "^7.8.0",
+    "zone.js": "~0.15.1"
   },
   "dependencies": {
     "tslib": "^2.4.0"

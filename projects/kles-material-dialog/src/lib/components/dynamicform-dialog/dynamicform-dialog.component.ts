@@ -1,17 +1,28 @@
 import { Component, Inject, ViewChild, AfterViewInit, ChangeDetectorRef, EventEmitter, ElementRef, ViewEncapsulation } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IKlesFieldConfig, IKlesValidator, KlesDynamicFormComponent } from '@3kles/kles-material-dynamicforms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import { IKlesFieldConfig, IKlesValidator, KlesDynamicFormComponent, KlesMaterialDynamicformsModule } from '@3kles/kles-material-dynamicforms';
 import { IKlesDynamicFormDataDialog } from './dynamicform-dialog.model';
-import { AsyncValidatorFn, FormGroup, UntypedFormGroup, ValidatorFn } from '@angular/forms';
-import { BehaviorSubject, EMPTY, Observable, of } from 'rxjs';
+import { AsyncValidatorFn, FormGroup, FormsModule, ReactiveFormsModule, UntypedFormGroup, ValidatorFn } from '@angular/forms';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { KlesDialogAbstractComponent } from '../kles-dialog.component';
+import { CommonModule } from '@angular/common';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
     templateUrl: './dynamicform-dialog.component.html',
-    // styles: ['mat-icon { vertical-align: middle; }'],
     styleUrls: ['../../../../styles/title.style.scss', '../../../../styles/fullsize.style.scss'],
     encapsulation: ViewEncapsulation.None,
-    standalone: false
+    standalone: true,
+    imports: [
+        CommonModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        KlesMaterialDynamicformsModule
+    ]
 })
 export class KlesDynamicFormDialogComponent extends KlesDialogAbstractComponent implements AfterViewInit {
 

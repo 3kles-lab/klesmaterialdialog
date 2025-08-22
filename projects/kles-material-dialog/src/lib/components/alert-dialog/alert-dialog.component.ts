@@ -1,13 +1,20 @@
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { KlesDialogAbstractComponent } from '../kles-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     templateUrl: './alert-dialog.component.html',
-    styleUrls: ['../../../../styles/title.style.scss',
-        '../../../../styles/fullsize.style.scss'],
+    styleUrls: [
+        '../../../../styles/title.style.scss',
+        '../../../../styles/fullsize.style.scss'
+    ],
     encapsulation: ViewEncapsulation.None,
-    standalone: false
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatDialogModule
+    ]
 })
 export class AlertDialogComponent extends KlesDialogAbstractComponent {
     message = '';

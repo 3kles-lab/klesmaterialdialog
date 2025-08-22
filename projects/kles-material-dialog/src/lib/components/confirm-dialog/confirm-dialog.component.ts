@@ -1,6 +1,7 @@
 import { Component, Inject, ViewEncapsulation } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { KlesDialogAbstractComponent } from '../kles-dialog.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
     selector: 'app-confirm-dialog',
@@ -11,7 +12,11 @@ import { KlesDialogAbstractComponent } from '../kles-dialog.component';
         '../../../../styles/fullsize.style.scss'
     ],
     encapsulation: ViewEncapsulation.None,
-    standalone: false
+    standalone: true,
+    imports: [
+        MatIconModule,
+        MatDialogModule
+    ]
 })
 export class ConfirmDialogComponent extends KlesDialogAbstractComponent {
 

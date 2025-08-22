@@ -11,26 +11,24 @@ import { DialogService } from './services/dialog.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 const COMPONENTS = [
-  AlertDialogComponent,
-  ConfirmDialogComponent,
-  SpinnerDialogComponent,
-  KlesDynamicFormDialogComponent
+    AlertDialogComponent,
+    ConfirmDialogComponent,
+    SpinnerDialogComponent,
+    KlesDynamicFormDialogComponent
 ];
 
-const SERVICES = [DialogService]
+const SERVICES = [DialogService];
 
 @NgModule({
-  declarations: [COMPONENTS],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    RouterModule,
-    KlesMaterialDynamicformsModule,
-    TranslateModule
-  ],
-  //entryComponents: [COMPONENTS],
-  providers: [SERVICES],
-  exports: [COMPONENTS]
+    imports: [
+        CommonModule,
+        MaterialModule,
+        RouterModule,
+        KlesMaterialDynamicformsModule,
+        TranslateModule,
+        COMPONENTS
+    ],
+    providers: [SERVICES],
+    exports: [COMPONENTS]
 })
-
 export class KlesMaterialDialogModule { }

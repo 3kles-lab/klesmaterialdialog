@@ -6,16 +6,13 @@ export interface IKlesDialogComponent {
     toggleFullsize(): void;
 }
 
-
 export abstract class KlesDialogAbstractComponent implements IKlesDialogComponent {
-
     public fullsize = signal(false);
     public fullsizeButton = signal(false);
 
     constructor(public dialogRef: MatDialogRef<KlesDialogAbstractComponent>) { }
 
     public toggleFullsize(): void {
-
         if (!this.fullsize()) {
             this.setFullsize();
         } else {
@@ -35,5 +32,4 @@ export abstract class KlesDialogAbstractComponent implements IKlesDialogComponen
         this.dialogRef.updatePosition();
         this.fullsize.set(false);
     }
-
 }
