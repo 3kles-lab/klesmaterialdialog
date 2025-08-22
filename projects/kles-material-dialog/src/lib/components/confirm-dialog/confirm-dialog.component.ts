@@ -10,7 +10,8 @@ import { KlesDialogAbstractComponent } from '../kles-dialog.component';
         '../../../../styles/title.style.scss',
         '../../../../styles/fullsize.style.scss'
     ],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class ConfirmDialogComponent extends KlesDialogAbstractComponent {
 

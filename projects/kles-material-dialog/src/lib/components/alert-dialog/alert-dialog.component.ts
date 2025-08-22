@@ -6,7 +6,8 @@ import { KlesDialogAbstractComponent } from '../kles-dialog.component';
     templateUrl: './alert-dialog.component.html',
     styleUrls: ['../../../../styles/title.style.scss',
         '../../../../styles/fullsize.style.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class AlertDialogComponent extends KlesDialogAbstractComponent {
     message = '';

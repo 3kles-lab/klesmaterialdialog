@@ -4,6 +4,7 @@ import { KlesDialogAbstractComponent } from '../kles-dialog.component';
 
 @Component({
     templateUrl: 'spinner-dialog.component.html',
+    standalone: false
 })
 export class SpinnerDialogComponent extends KlesDialogAbstractComponent {
 

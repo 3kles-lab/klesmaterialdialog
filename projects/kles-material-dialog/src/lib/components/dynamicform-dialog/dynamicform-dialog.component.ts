@@ -10,7 +10,8 @@ import { KlesDialogAbstractComponent } from '../kles-dialog.component';
     templateUrl: './dynamicform-dialog.component.html',
     // styles: ['mat-icon { vertical-align: middle; }'],
     styleUrls: ['../../../../styles/title.style.scss', '../../../../styles/fullsize.style.scss'],
-    encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class KlesDynamicFormDialogComponent extends KlesDialogAbstractComponent implements AfterViewInit {
 
