@@ -1,3 +1,21 @@
+# [21.0.0](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v20.0.1...v21.0.0) (2026-08-13)
+
+
+### Bug Fixes
+
+* peer dependencies ([e3e3c91](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/e3e3c91eb95d2c3a78eca30c9072fc645f1d4d4e))
+
+
+### Features
+
+* upgrade angular ([132ba8b](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/132ba8b897d80f9a875f5522b603e7e706ea282c))
+* upgrade angular material ([b89d571](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/b89d5713d48f1e3904aef8bf4341f1c40d48d9fd))
+
+
+### BREAKING CHANGES
+
+* angular 20 to 21
+
 ## [20.0.1](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v20.0.0...v20.0.1) (2026-08-13)
 
 
