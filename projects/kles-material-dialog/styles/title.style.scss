@@ -1,14 +1,13 @@
 .title {
-    .mat-mdc-dialog-title {
-        display: flex;
-        flex-direction: row;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 5px;
-        color: var(--mat-dialog-subhead-color, rgba(0, 0, 0, 0.87));
+  .mat-mdc-dialog-title {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 5px;
 
-        .icon-title {
-            vertical-align: middle;
-        }
+    .icon-title {
+      vertical-align: middle;
     }
+  }
 }
