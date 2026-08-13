@@ -28,7 +28,7 @@
   },
   "private": true,
   "dependencies": {
-    "@3kles/kles-material-dynamicforms": "^19.1.0",
+    "@3kles/kles-material-dynamicforms": "^20.0.0",
     "moment": "^2.24.0",
     "@angular/animations": "^20.3.27",
     "@angular/cdk": "^20.2.14",
@@ -45,7 +45,7 @@
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
     "luxon": "^3.2.1",
-    "ngx-color-picker": "^19.0.0",
+    "ngx-color-picker": "^20.0.0",
     "ngx-mat-select-search": "^8.0.2",
     "rxjs": "^7.4.0",
     "tslib": "^2.4.0",
