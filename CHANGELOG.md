@@ -1,3 +1,10 @@
+## [21.0.1](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.0...v21.0.1) (2026-08-13)
+
+
+### Bug Fixes
+
+* title color ([514122b](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/514122baa51127f598bb5c9e5a011dc2a101b62d))
+
 # [21.0.0](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v20.0.1...v21.0.0) (2026-08-13)
 
 
