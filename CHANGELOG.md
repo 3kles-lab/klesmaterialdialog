@@ -1,3 +1,10 @@
+## [20.0.1](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v20.0.0...v20.0.1) (2026-08-13)
+
+
+### Bug Fixes
+
+* peerDependencies ([e36ecde](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/e36ecde18a262aedbc732796278107ffb9b4a5f1))
+
 # [20.0.0](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v19.0.3...v20.0.0) (2026-08-13)
 
 
