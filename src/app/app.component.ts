@@ -1,5 +1,5 @@
 import { IKlesFieldConfig, KlesFormCheckboxComponent, KlesFormInputComponent } from '@3kles/kles-material-dynamicforms';
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -15,9 +15,8 @@ import { delay, switchMap } from 'rxjs/operators';
     styleUrls: ['./app.component.scss'],
     standalone: true,
     imports: [
-      RouterModule,
-      CommonModule
-    ]
+    RouterModule
+]
 })
 export class AppComponent {
   title = 'testLib';
