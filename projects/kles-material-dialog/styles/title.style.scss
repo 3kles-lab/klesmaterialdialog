@@ -2,12 +2,12 @@
   .mat-mdc-dialog-title {
     display: flex;
     flex-direction: row;
-    align-items: baseline;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: flex-start;
     gap: 5px;
 
-    .icon-title {
-      vertical-align: middle;
+   .icon-title {
+      flex-shrink: 0;
     }
   }
 }
