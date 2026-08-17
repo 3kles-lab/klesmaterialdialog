@@ -1,3 +1,10 @@
+## [21.0.2](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.1...v21.0.2) (2026-08-17)
+
+
+### Bug Fixes
+
+* title icon and button align ([da771aa](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/da771aa7f74887a93dba8e073f7a9303973acb8d))
+
 ## [21.0.1](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.0...v21.0.1) (2026-08-13)
 
 
