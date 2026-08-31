@@ -1,0 +1,83 @@
+.kles-message-dialog {
+  &__header {
+    padding: 24px 24px 0;
+  }
+
+  &__title.mat-mdc-dialog-title {
+    min-height: 48px;
+    margin: 0;
+    padding: 0;
+    gap: 12px;
+    color: var(--mat-sys-on-surface);
+    font: var(--mat-sys-headline-small);
+    letter-spacing: normal;
+  }
+
+  &__title-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &__icon-wrap {
+    display: inline-flex;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+  }
+
+  &__icon-wrap .mat-icon {
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+  }
+
+  &__fullsize {
+    flex: 0 0 auto;
+    color: var(--mat-sys-on-surface-variant);
+  }
+
+  &__content.mat-mdc-dialog-content {
+    box-sizing: border-box;
+    width: 360px;
+    max-width: 100%;
+    padding: 20px 24px 8px;
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-body-large);
+  }
+
+  &__message {
+    margin: 0;
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+  }
+
+  &__actions.mat-mdc-dialog-actions {
+    min-height: auto;
+  }
+
+  &__button {
+    min-width: 96px;
+  }
+}
+
+@media (max-width: 479px) {
+  .kles-message-dialog {
+    &__header {
+      padding: 20px 20px 0;
+    }
+
+    &__content.mat-mdc-dialog-content {
+      width: 100%;
+      padding: 16px 20px 8px;
+    }
+
+    &__actions.mat-mdc-dialog-actions {
+      padding: 16px 20px 20px;
+    }
+  }
+}

@@ -1,7 +1,2 @@
-app-confirm-dialog {
-    text-align: center;
-
-    h3 {
-        font-weight: 500;
-    }
-}
+// Component-specific overrides can be added here. The shared visual treatment
+// lives in styles/message-dialog.style.scss so alert and confirm stay aligned.

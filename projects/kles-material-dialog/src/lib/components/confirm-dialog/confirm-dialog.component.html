@@ -1,14 +1,18 @@
-<div class="title">
+<div class="title kles-message-dialog__header">
     @if (title) {
-    <div mat-dialog-title>
+    <div mat-dialog-title class="kles-message-dialog__title">
         @if (icon) {
-        <mat-icon class="icon-title" [fontIcon]="icon"></mat-icon>
+        <span class="kles-message-dialog__icon-wrap" aria-hidden="true">
+            <mat-icon class="icon-title" [fontIcon]="icon"></mat-icon>
+        </span>
         }
 
-        {{ title }}
+        <span class="kles-message-dialog__title-text">{{ title }}</span>
 
         @if (fullsizeButton()) {
-        <button class="fullsize-button" mat-icon-button type="button" (click)="toggleFullsize()">
+        <button class="fullsize-button kles-message-dialog__fullsize" mat-icon-button type="button"
+            [attr.aria-label]="fullsize() ? 'Exit full screen' : 'Enter full screen'"
+            (click)="toggleFullsize()">
             @if (fullsize()) {
             <mat-icon>fullscreen_exit</mat-icon>
             } @else {
@@ -20,12 +24,15 @@
     }
 </div>
 
-<mat-dialog-content>
-    <p class="message">
+<mat-dialog-content class="kles-message-dialog__content">
+    <p class="message kles-message-dialog__message">
         {{ message }}
     </p>
 </mat-dialog-content>
-<mat-dialog-actions align="center">
-    <button mat-button color="primary" mat-dialog-close tabindex="-1">{{ cancelButtonText }}</button>
-    <button mat-flat-button color="primary" (click)="onConfirmClick()" tabindex="1">{{ confirmButtonText }}</button>
+<mat-dialog-actions class="kles-message-dialog__actions" align="end">
+    <button class="kles-message-dialog__button" mat-button mat-dialog-close>{{ cancelButtonText }}</button>
+    <button class="kles-message-dialog__button" mat-flat-button color="primary" (click)="onConfirmClick()">
+        {{ confirmButtonText }}
+    </button>
 </mat-dialog-actions>
+
