@@ -1,3 +1,10 @@
+## [21.0.3](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.2...v21.0.3) (2026-08-31)
+
+
+### Bug Fixes
+
+* dialog design ([61c54a7](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/61c54a73032b79065f6fb32c3b849102e9f90bfa))
+
 ## [21.0.2](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.1...v21.0.2) (2026-08-17)
 
 
