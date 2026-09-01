@@ -1,3 +1,10 @@
+## [21.0.4](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.3...v21.0.4) (2026-09-01)
+
+
+### Bug Fixes
+
+* remove default width ([acabb93](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/acabb933e25cd0a860ab54216006f1e20d9be8dd))
+
 ## [21.0.3](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.2...v21.0.3) (2026-08-31)
 
 
