@@ -4,7 +4,7 @@ import {
   KlesFormInputComponent,
 } from '@3kles/kles-material-dynamicforms';
 
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
@@ -27,6 +27,7 @@ import { ThemeService } from './theme.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [RouterModule],
 })
 export class AppComponent {

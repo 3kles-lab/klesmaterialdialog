@@ -4,6 +4,7 @@ import {
   Input,
   Output,
   ViewEncapsulation,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -17,6 +18,7 @@ export type KlesDialogTitleContentAlign = 'start' | 'center' | 'end';
   styleUrl: './dialog-layout.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButtonModule, MatDialogModule, MatIconModule],
 })
 export class KlesDialogLayoutComponent {

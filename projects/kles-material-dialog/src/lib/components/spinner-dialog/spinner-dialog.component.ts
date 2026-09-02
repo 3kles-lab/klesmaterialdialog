@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { KlesDialogAbstractComponent } from '../kles-dialog.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -15,6 +15,7 @@ import { KlesDialogLayoutComponent } from '../dialog-layout/dialog-layout.compon
     }
   `,
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatProgressSpinnerModule, KlesDialogLayoutComponent],
 })
 export class SpinnerDialogComponent<TData = any> extends KlesDialogAbstractComponent {

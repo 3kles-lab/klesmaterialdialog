@@ -1,4 +1,4 @@
-import { Component, Inject, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
@@ -28,6 +28,7 @@ export interface IKlesAlertDialogData {
   ],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [MatButtonModule, MatDialogModule, KlesDialogLayoutComponent],
 })
 export class AlertDialogComponent extends KlesDialogAbstractComponent {

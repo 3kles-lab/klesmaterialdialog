@@ -7,6 +7,7 @@ import {
   EventEmitter,
   ElementRef,
   ViewEncapsulation,
+  ChangeDetectionStrategy
 } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
@@ -43,6 +44,7 @@ import { KlesDialogLayoutComponent } from '../dialog-layout/dialog-layout.compon
   ],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     CommonModule,
     MatButtonModule,
