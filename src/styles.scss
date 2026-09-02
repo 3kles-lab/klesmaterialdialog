@@ -1,18 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+@use './assets/theme/tokens' as tokens;
 
-@use '@angular/material' as mat;
-
-html {
-  @include mat.theme((
-    color: (
-      primary: mat.$magenta-palette,
-      tertiary: mat.$violet-palette,
-      theme-type: light,
-    ),
-    typography: Roboto,
-    density: 0
-  ));
+:root {
+  --logo-url: url('/assets/images/milo-blue.png');
+  --logo-url-blue: url('/assets/images/milo-blue.png');
+  --logo-url-white: url('/assets/images/milo-white.png');
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html {
+  @include tokens.app-theme();
+
+  color-scheme: light;
+  // height: 100%;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
+
+html.dark {
+  color-scheme: dark;
+  --logo-url: var(--logo-url-white);
+}
+
+body {
+  @include tokens.heading-hierarchy();
+
+  min-height: 100%;
+  margin: 0;
+  background: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+}

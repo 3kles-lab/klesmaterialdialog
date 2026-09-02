@@ -1,0 +1,115 @@
+@use '@angular/material' as mat;
+@use './theme-color' as colors;
+
+// Apply once on `html` from the global stylesheet.
+// `color-scheme` lets Angular Material 22 resolve both modes from one theme.
+@mixin app-theme() {
+    @include mat.theme(
+        (
+            color: (
+                theme-type: color-scheme,
+                primary: colors.$primary-palette,
+                tertiary: colors.$tertiary-palette,
+            ),
+            typography: (
+                plain-family: (
+                    Roboto,
+                    sans-serif,
+                ),
+                brand-family: (
+                    Roboto,
+                    sans-serif,
+                ),
+                regular-weight: 400,
+                medium-weight: 500,
+                bold-weight: 700,
+            ),
+            density: 0,
+        )
+    );
+
+    // Small, intentional deviations from the generated palette.
+    // The cool dark surfaces give cards and sidebars visible depth without
+    // turning the interface blue or relying on heavy borders.
+    @include mat.theme-overrides(
+        (
+            primary: light-dark(#002060, #b4c5ff),
+            on-primary: light-dark(#ffffff, #112c6b),
+            primary-container: light-dark(#dbe1ff, #2c4383),
+            on-primary-container: light-dark(#00174b, #dbe1ff),
+            background: light-dark(#fafbff, #101218),
+            on-background: light-dark(#1a1b20, #e3e2e8),
+            surface: light-dark(#fafbff, #101218),
+            surface-dim: light-dark(#dbdce4, #101218),
+            surface-bright: light-dark(#fafbff, #383b46),
+            surface-container-lowest: light-dark(#ffffff, #0b0d12),
+            surface-container-low: light-dark(#f4f5fb, #171920),
+            surface-container: light-dark(#edeff6, #1e2028),
+            surface-container-high: light-dark(#e7e9f1, #272a34),
+            surface-container-highest: light-dark(#e0e3ec, #31343f),
+            on-surface: light-dark(#1a1b20, #e3e2e8),
+            on-surface-variant: light-dark(#444650, #c5c6d2),
+            surface-variant: light-dark(#e1e2ee, #444650),
+            outline: light-dark(#757681, #8f909b),
+            outline-variant: light-dark(#c5c6d2, #444650),
+            // A tint must follow the primary hue; gray removes tonal depth.
+            surface-tint: light-dark(#455b9d, #b4c5ff),
+        )
+    );
+}
+
+// Typography hierarchy for native headings. h1-h3 already match the M3
+// defaults; h4 is deliberately made a little denser and stronger.
+@mixin heading-hierarchy() {
+    h1 {
+        font: var(--mat-sys-headline-large);
+        margin: 0 0 0.6em;
+    }
+
+    h2 {
+        font: var(--mat-sys-headline-medium);
+        margin: 0 0 0.55em;
+    }
+
+    h3 {
+        font: var(--mat-sys-headline-small);
+        margin: 0 0 0.5em;
+    }
+
+    h4 {
+        font: var(--mat-sys-title-large);
+        font-size: 1.25rem;
+        font-weight: 500;
+        margin: 0 0 0.45em;
+    }
+
+    h5 {
+        font: var(--mat-sys-title-medium);
+        margin: 0 0 0.4em;
+    }
+
+    h6 {
+        font: var(--mat-sys-title-small);
+        margin: 0 0 0.35em;
+    }
+}
+
+// Suggested global usage:
+//
+// html {
+//   @include app-theme();
+//   color-scheme: light;
+//   background: var(--mat-sys-surface);
+//   color: var(--mat-sys-on-surface);
+// }
+//
+// html.dark {
+//   color-scheme: dark;
+// }
+//
+// body {
+//   @include heading-hierarchy();
+//   background: var(--mat-sys-surface);
+//   color: var(--mat-sys-on-surface);
+//   font: var(--mat-sys-body-medium);
+// }

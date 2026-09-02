@@ -1,29 +1,44 @@
-import { IKlesFieldConfig, KlesFormCheckboxComponent, KlesFormInputComponent } from '@3kles/kles-material-dynamicforms';
+import {
+  IKlesFieldConfig,
+  KlesFormCheckboxComponent,
+  KlesFormInputComponent,
+} from '@3kles/kles-material-dynamicforms';
 
 import { Component } from '@angular/core';
 import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
-import { AlertDialogComponent, ConfirmDialogComponent, SpinnerDialogComponent } from 'kles-material-dialog';
-import { IKlesDynamicFormDataDialog, KlesDynamicFormDialogComponent } from 'projects/kles-material-dialog/src/public-api';
+import {
+  AlertDialogComponent,
+  ConfirmDialogComponent,
+  SpinnerDialogComponent,
+} from 'kles-material-dialog';
+
+import {
+  IKlesDynamicFormDataDialog,
+  KlesDynamicFormDialogComponent,
+} from 'projects/kles-material-dialog/src/public-api';
 import { of, throwError } from 'rxjs';
 import { delay, switchMap } from 'rxjs/operators';
+import { ThemeService } from './theme.service';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    standalone: true,
-    imports: [
-    RouterModule
-]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+  standalone: true,
+  imports: [RouterModule],
 })
 export class AppComponent {
   title = 'testLib';
   fields: IKlesFieldConfig[];
   item: any;
 
-  constructor(protected dialog: MatDialog) {
+  constructor(
+    protected dialog: MatDialog,
+    private themeService: ThemeService,
+  ) {
+    this.themeService.apply();
     this.fields = [
       {
         label: 'checkbox',
@@ -41,14 +56,14 @@ export class AppComponent {
           {
             name: 'required',
             validator: Validators.required,
-            message: 'statusSettings.beginvalue.validator.required'
+            message: 'statusSettings.beginvalue.validator.required',
           },
           {
             name: 'pattern',
             validator: Validators.pattern('^([0-9][0-9]{0,2}|1000)$'),
-            message: 'statusSettings.beginvalue.validator.notValid'
-          }
-        ]
+            message: 'statusSettings.beginvalue.validator.notValid',
+          },
+        ],
       },
       {
         component: KlesFormInputComponent,
@@ -59,14 +74,14 @@ export class AppComponent {
           {
             name: 'required',
             validator: Validators.required,
-            message: 'statusSettings.endValue.validator.required'
+            message: 'statusSettings.endValue.validator.required',
           },
           {
             name: 'pattern',
             validator: Validators.pattern('^([0-9][0-9]{0,2}|1000)$'),
-            message: 'statusSettings.endValue.validator.notValid'
-          }
-        ]
+            message: 'statusSettings.endValue.validator.notValid',
+          },
+        ],
       },
       /*{
         component: KlesFormInputComponent,
@@ -181,21 +196,25 @@ export class AppComponent {
     this.item = { beginvalue: 11, endvalue: 10, color: '#ff67' };
   }
 
+  toggle(){
+    this.themeService.toggle()
+  }
 
   openConfirmDialog(): MatDialogRef<ConfirmDialogComponent, any> {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       // width: '350px',
+      
       data: {
-        message: "Message",
-        confirmButtonText: "yes.text",
-        cancelButtonText: "cancel.text",
+        message: 'Message',
+        confirmButtonText: 'yes.text',
+        cancelButtonText: 'cancel.text',
         title: 'aaaa',
         icon: 'warning',
         option: {
           fullsize: false,
-          fullsizeButton: true
+          fullsizeButton: true,
         },
-      }
+      },
     });
     return dialogRef;
   }
@@ -204,15 +223,15 @@ export class AppComponent {
     const dialogRef = this.dialog.open(AlertDialogComponent, {
       width: '350px',
       data: {
-        title: "Title",
-        message: "Message",
-        cancelButtonText: "cancel.text",
+        title: 'Title',
+        message: 'Message',
+        cancelButtonText: 'cancel.text',
         icon: 'warning',
         option: {
           fullsize: false,
-          fullsizeButton: true
+          fullsizeButton: true,
         },
-      }
+      },
     });
     return dialogRef;
   }
@@ -220,15 +239,16 @@ export class AppComponent {
   openSpinnerDialog(): MatDialogRef<SpinnerDialogComponent, any> {
     const dialogRef = this.dialog.open(SpinnerDialogComponent, {
       width: '350px',
-      data: "Message...",
-
+      data: 'Message...',
     });
     return dialogRef;
   }
 
   openDynamicFormDialog(): MatDialogRef<KlesDynamicFormDialogComponent, any> {
+    
     const dialogRef = this.dialog.open(KlesDynamicFormDialogComponent, {
-      //width: '350px',
+      width: '850px',
+      autoFocus: 'dialog',
       data: {
         fields: this.fields,
         item: this.item,
@@ -239,16 +259,17 @@ export class AppComponent {
         icon: 'warning',
         option: {
           fullsize: false,
-          fullsizeButton: true
+          fullsizeButton: true,
         },
         beforeClose: (item, form) => {
-          return of(form.value).pipe(delay(1000000), switchMap(() => {
-            return throwError(() => ({ message: 'aaaaa' }))
-          }))
-
-        }
-      } as IKlesDynamicFormDataDialog
-
+          return of(form.value).pipe(
+            delay(200),
+            switchMap(() => {
+              return throwError(() => ({ message: 'aaaaa' }));
+            }),
+          );
+        },
+      } as IKlesDynamicFormDataDialog,
     });
     // dialogRef.componentInstance.onLoadedForm.subscribe(s => {
     //   dialogRef.componentInstance.getForm().valueChanges.subscribe(s => {
@@ -257,8 +278,7 @@ export class AppComponent {
     //   })
     // });
 
-    dialogRef.afterClosed().subscribe(value => console.log(value))
-
+    dialogRef.afterClosed().subscribe((value) => console.log(value));
 
     return dialogRef;
   }
