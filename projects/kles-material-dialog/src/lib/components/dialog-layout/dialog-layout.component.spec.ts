@@ -115,7 +115,21 @@ describe('KlesDialogLayoutComponent', () => {
     ) as HTMLElement;
 
     expect(content.classList.contains('mat-mdc-dialog-content')).toBeTrue();
+    expect(parseFloat(getComputedStyle(content).maxHeight)).toBeCloseTo(
+      window.innerHeight * 0.65,
+      1,
+    );
     expect(getComputedStyle(content).overflowY).toBe('auto');
+  });
+
+  it('allows the content maximum height to be customized', () => {
+    const layout = element.querySelector('kles-dialog-layout') as HTMLElement;
+    const content = element.querySelector(
+      '.kles-dialog-layout__content',
+    ) as HTMLElement;
+    layout.style.setProperty('--kles-dialog-content-max-height', '320px');
+
+    expect(getComputedStyle(content).maxHeight).toBe('320px');
   });
 
   it('keeps status and actions together in a fixed footer', () => {
@@ -134,6 +148,9 @@ describe('KlesDialogLayoutComponent', () => {
   it('fills the viewport and removes the Material width cap in full screen', () => {
     const host = fixture.nativeElement as HTMLElement;
     const layout = element.querySelector('kles-dialog-layout') as HTMLElement;
+    const content = element.querySelector(
+      '.kles-dialog-layout__content',
+    ) as HTMLElement;
     host.classList.add('dialog-fullsize');
 
     const hostStyle = getComputedStyle(host);
@@ -143,5 +160,6 @@ describe('KlesDialogLayoutComponent', () => {
     expect(hostStyle.maxWidth).toBe('none');
     expect(hostStyle.maxHeight).toBe('none');
     expect(getComputedStyle(layout).height).toBe(`${window.innerHeight}px`);
+    expect(getComputedStyle(content).maxHeight).toBe('none');
   });
 });
