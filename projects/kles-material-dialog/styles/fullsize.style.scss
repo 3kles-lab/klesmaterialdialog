@@ -1,5 +1,9 @@
-.dialog-fullsize{
+.dialog-fullsize {
+    width: 100vw !important;
+    height: 100vh !important;
+    height: 100dvh !important;
     max-width: none !important;
+    max-height: none !important;
 
     .mat-mdc-dialog-content {
         max-height: none !important;

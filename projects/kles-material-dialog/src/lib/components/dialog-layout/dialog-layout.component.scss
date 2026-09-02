@@ -7,7 +7,11 @@ kles-dialog-layout {
 }
 
 .dialog-fullsize {
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
   max-width: none !important;
+  max-height: none !important;
 
   .mat-mdc-dialog-surface {
     border-radius: 0;

@@ -136,7 +136,12 @@ describe('KlesDialogLayoutComponent', () => {
     const layout = element.querySelector('kles-dialog-layout') as HTMLElement;
     host.classList.add('dialog-fullsize');
 
-    expect(getComputedStyle(host).maxWidth).toBe('none');
+    const hostStyle = getComputedStyle(host);
+
+    expect(hostStyle.width).toBe(`${window.innerWidth}px`);
+    expect(hostStyle.height).toBe(`${window.innerHeight}px`);
+    expect(hostStyle.maxWidth).toBe('none');
+    expect(hostStyle.maxHeight).toBe('none');
     expect(getComputedStyle(layout).height).toBe(`${window.innerHeight}px`);
   });
 });
