@@ -4,20 +4,31 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { KlesDialogAbstractComponent } from '../kles-dialog.component';
-import { MatIconModule } from '@angular/material/icon';
+import {
+  IKlesDialogOptions,
+  KlesDialogAbstractComponent,
+} from '../kles-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { KlesDialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
+
+export interface IKlesAlertDialogData {
+  message?: string;
+  title?: string;
+  icon?: string;
+  buttonText?: {
+    cancel?: string;
+  };
+  option?: IKlesDialogOptions;
+}
 
 @Component({
   templateUrl: './alert-dialog.component.html',
   styleUrls: [
     '../../../../styles/message-dialog.style.scss',
-    '../../../../styles/title.style.scss',
-    '../../../../styles/fullsize.style.scss',
   ],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatDialogModule],
+  imports: [MatButtonModule, MatDialogModule, KlesDialogLayoutComponent],
 })
 export class AlertDialogComponent extends KlesDialogAbstractComponent {
   message = '';
@@ -26,7 +37,7 @@ export class AlertDialogComponent extends KlesDialogAbstractComponent {
   icon!: string;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: any,
+    @Inject(MAT_DIALOG_DATA) private data: IKlesAlertDialogData | null,
     public dialogRef: MatDialogRef<AlertDialogComponent>,
   ) {
     super(dialogRef);

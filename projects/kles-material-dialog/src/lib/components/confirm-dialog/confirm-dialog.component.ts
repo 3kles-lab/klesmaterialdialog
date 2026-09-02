@@ -4,9 +4,23 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { KlesDialogAbstractComponent } from '../kles-dialog.component';
-import { MatIconModule } from '@angular/material/icon';
+import {
+  IKlesDialogOptions,
+  KlesDialogAbstractComponent,
+} from '../kles-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { KlesDialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
+
+export interface IKlesConfirmDialogData {
+  message?: string;
+  title?: string;
+  icon?: string;
+  buttonText?: {
+    ok?: string;
+    cancel?: string;
+  };
+  option?: IKlesDialogOptions;
+}
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -14,12 +28,10 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrls: [
     './confirm-dialog.component.scss',
     '../../../../styles/message-dialog.style.scss',
-    '../../../../styles/title.style.scss',
-    '../../../../styles/fullsize.style.scss',
   ],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [MatButtonModule, MatIconModule, MatDialogModule],
+  imports: [MatButtonModule, MatDialogModule, KlesDialogLayoutComponent],
 })
 export class ConfirmDialogComponent extends KlesDialogAbstractComponent {
   title: string | undefined;
@@ -29,7 +41,7 @@ export class ConfirmDialogComponent extends KlesDialogAbstractComponent {
   icon: string | undefined;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) private data: any,
+    @Inject(MAT_DIALOG_DATA) private data: IKlesConfirmDialogData | null,
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
   ) {
     super(dialogRef);

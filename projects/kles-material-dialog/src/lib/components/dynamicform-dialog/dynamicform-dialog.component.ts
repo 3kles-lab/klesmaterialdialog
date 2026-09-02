@@ -8,18 +8,17 @@ import {
   ElementRef,
   ViewEncapsulation,
 } from '@angular/core';
-import {
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-  MatDialogModule,
-} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   IKlesFieldConfig,
   IKlesValidator,
   KlesDynamicFormComponent,
   KlesMaterialDynamicformsModule,
 } from '@3kles/kles-material-dynamicforms';
-import { IKlesDynamicFormDataDialog } from './dynamicform-dialog.model';
+import {
+  IKlesDynamicFormDataDialog,
+  KlesDynamicFormDirection,
+} from './dynamicform-dialog.model';
 import {
   AsyncValidatorFn,
   FormGroup,
@@ -33,6 +32,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { KlesDialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
 
 @Component({
   templateUrl: './dynamicform-dialog.component.html',
@@ -48,48 +48,57 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     MatProgressSpinnerModule,
     MatIconModule,
-    MatDialogModule,
     MatFormFieldModule,
     KlesMaterialDynamicformsModule,
+    KlesDialogLayoutComponent,
   ],
 })
-export class KlesDynamicFormDialogComponent
+export class KlesDynamicFormDialogComponent<
+  TItem = any,
+  TResponse = any,
+  TError = any,
+>
   extends KlesDialogAbstractComponent
   implements AfterViewInit
 {
-  @ViewChild('errorElem') errorElemRef!: ElementRef;
+  @ViewChild('errorElem') errorElemRef!: ElementRef<HTMLElement>;
 
   title: string | undefined;
   fields: IKlesFieldConfig[];
   validators: IKlesValidator<ValidatorFn>[] = [];
   asyncValidators: IKlesValidator<AsyncValidatorFn>[] = [];
-  direction: string = 'column';
-  item: any;
+  direction: KlesDynamicFormDirection = 'column';
+  item: TItem;
   buttonCancel = 'Cancel';
   buttonOK = 'OK';
-  onLoadedForm = new EventEmitter();
+  onLoadedForm = new EventEmitter<boolean>();
   icon: string | undefined;
   pending = new BehaviorSubject<boolean>(false);
-  error$ = new BehaviorSubject<any>(null);
+  error$ = new BehaviorSubject<TError | null>(null);
 
-  beforeClose: (item: any, form: FormGroup) => Observable<any> = () => of({});
+  beforeClose: (item: TItem, form: FormGroup) => Observable<TResponse> = () =>
+    of({} as TResponse);
 
   @ViewChild(KlesDynamicFormComponent, { static: true })
   dynamicForm!: KlesDynamicFormComponent;
 
   constructor(
-    public dialogRef: MatDialogRef<KlesDynamicFormDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: IKlesDynamicFormDataDialog,
+    public dialogRef: MatDialogRef<
+      KlesDynamicFormDialogComponent<TItem, TResponse, TError>
+    >,
+    @Inject(MAT_DIALOG_DATA)
+    public data: IKlesDynamicFormDataDialog<TItem, TResponse>,
     private ref: ChangeDetectorRef,
   ) {
     super(dialogRef);
-    this.item = data.item ? data.item : {};
+    this.item = data.item ? data.item : ({} as TItem);
     if (data.validators) this.validators = data.validators;
     if (data.asyncValidators) this.asyncValidators = data.asyncValidators;
     if (data.direction) {
       this.direction = data.direction;
     }
-    data.fields.forEach((f) => (f.value = this.item[f.name]));
+    const itemValues = this.item as Record<string, unknown>;
+    data.fields.forEach((f) => (f.value = itemValues[f.name]));
     this.fields = data.fields;
     this.icon = data.icon;
     if (data.buttonCancel) this.buttonCancel = data.buttonCancel;
@@ -108,7 +117,7 @@ export class KlesDynamicFormDialogComponent
   }
 
   ngAfterViewInit(): void {
-    if (this.item && Object.keys(this.item).length > 0) {
+    if (this.item && Object.keys(this.item as object).length > 0) {
       this.dynamicForm.form.markAllAsTouched();
     }
 
@@ -118,6 +127,14 @@ export class KlesDynamicFormDialogComponent
 
   getForm(): UntypedFormGroup {
     return this.dynamicForm.form;
+  }
+
+  getErrorMessage(error: TError): unknown {
+    if (error !== null && typeof error === 'object' && 'message' in error) {
+      return (error as { message?: unknown }).message;
+    }
+
+    return undefined;
   }
 
   onClose() {
@@ -134,9 +151,9 @@ export class KlesDynamicFormDialogComponent
           ...(response && { response }),
         });
       },
-      error: (e) => {
+      error: (e: unknown) => {
         console.error(e);
-        this.error$.next(e);
+        this.error$.next(e as TError);
         this.pending.next(false);
         this.ref.markForCheck();
         setTimeout(() => {

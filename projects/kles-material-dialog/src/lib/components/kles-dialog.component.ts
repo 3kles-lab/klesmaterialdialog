@@ -6,6 +6,11 @@ export interface IKlesDialogComponent {
     toggleFullsize(): void;
 }
 
+export interface IKlesDialogOptions {
+    fullsizeButton?: boolean;
+    fullsize?: boolean;
+}
+
 export abstract class KlesDialogAbstractComponent implements IKlesDialogComponent {
     public fullsize = signal(false);
     public fullsizeButton = signal(false);

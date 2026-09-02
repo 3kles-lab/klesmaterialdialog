@@ -1,0 +1,163 @@
+kles-dialog-layout {
+  display: flex;
+  min-height: 0;
+  max-height: 95vh;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.dialog-fullsize {
+  max-width: none !important;
+
+  .mat-mdc-dialog-surface {
+    border-radius: 0;
+  }
+
+  kles-dialog-layout {
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+  }
+
+  .kles-dialog-layout__content.mat-mdc-dialog-content {
+    max-height: none;
+  }
+}
+
+.kles-dialog-layout {
+  &__header {
+    flex: 0 0 auto;
+    padding: 24px 24px 0;
+  }
+
+  &__title.mat-mdc-dialog-title {
+    display: flex;
+    min-height: 48px;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    gap: 12px;
+    color: var(--mat-sys-on-surface);
+    font: var(--mat-sys-headline-small);
+    letter-spacing: normal;
+  }
+
+  &__title-text {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &__title-content {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+
+    &--center {
+      margin-inline: auto;
+    }
+
+    &--end {
+      margin-inline-start: auto;
+    }
+  }
+
+  &__icon-wrap {
+    display: inline-flex;
+    width: 44px;
+    height: 44px;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-primary-container);
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    font-size: 24px;
+  }
+
+  &__fullsize {
+    flex: 0 0 auto;
+    color: var(--mat-sys-on-surface-variant);
+  }
+
+  &__title-content--start + &__fullsize {
+    margin-inline-start: auto;
+  }
+
+  &__content.mat-mdc-dialog-content {
+    box-sizing: border-box;
+    min-height: 0;
+    max-width: 100%;
+    max-height: none;
+    flex: 1 1 auto;
+    padding: 20px 24px 8px;
+    overflow-y: auto;
+    color: var(--mat-sys-on-surface-variant);
+    font: var(--mat-sys-body-large);
+  }
+
+  &__footer {
+    display: block;
+    flex: 0 0 auto;
+  }
+
+  &__status:empty {
+    display: none;
+  }
+
+  &__status {
+    padding: 8px 24px 0;
+  }
+
+  &__actions.mat-mdc-dialog-actions {
+    display: flex;
+    min-height: auto;
+    padding: 16px 24px 24px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__actions-start,
+  &__actions-end {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__actions-end {
+    margin-inline-start: auto;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 479px) {
+  .kles-dialog-layout {
+    &__header {
+      padding: 20px 20px 0;
+    }
+
+    &__title.mat-mdc-dialog-title {
+      gap: 8px;
+    }
+
+    &__content.mat-mdc-dialog-content {
+      width: 100%;
+      padding: 16px 20px 8px;
+    }
+
+    &__status {
+      padding-inline: 20px;
+    }
+
+    &__actions.mat-mdc-dialog-actions {
+      padding: 16px 20px 20px;
+    }
+  }
+}

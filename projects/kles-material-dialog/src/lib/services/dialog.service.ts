@@ -1,22 +1,26 @@
 import { Injectable, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import {
+    MatDialog,
+    MatDialogConfig,
+    MatDialogRef,
+} from '@angular/material/dialog';
 import { ComponentType } from '@angular/cdk/portal';
 
 @Injectable()
-export class DialogService<T> {
-    dialogRef: MatDialogRef<T>;
+export class DialogService<T, TData = any, TResult = any> {
+    dialogRef: MatDialogRef<T, TResult>;
 
     constructor(private dialog: MatDialog, @Inject('componentType') private componentType: ComponentType<T>) { }
 
-    open(options?) {
+    open(options?: MatDialogConfig<TData>): void {
         if (this.dialogRef) {
             this.dialogRef.close();
         }
 
-        this.dialogRef = this.dialog.open(this.componentType, options);
+        this.dialogRef = this.dialog.open<T, TData, TResult>(this.componentType, options);
     }
 
-    close() {
-        this.dialogRef.close();
+    close(result?: TResult): void {
+        this.dialogRef.close(result);
     }
 }

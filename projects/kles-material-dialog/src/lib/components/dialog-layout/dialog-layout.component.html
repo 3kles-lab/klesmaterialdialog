@@ -1,0 +1,65 @@
+@if (showHeader) {
+  <div class="kles-dialog-layout__header">
+    <div mat-dialog-title class="kles-dialog-layout__title">
+      @if (icon) {
+        <span class="kles-dialog-layout__icon-wrap" aria-hidden="true">
+          <mat-icon class="kles-dialog-layout__icon" [fontIcon]="icon"></mat-icon>
+        </span>
+      }
+
+      <span class="kles-dialog-layout__title-text">
+        <ng-content select="[klesDialogTitle]"></ng-content>
+      </span>
+
+      <div
+        class="kles-dialog-layout__title-content"
+        [class.kles-dialog-layout__title-content--start]="
+          titleContentAlign === 'start'
+        "
+        [class.kles-dialog-layout__title-content--center]="
+          titleContentAlign === 'center'
+        "
+        [class.kles-dialog-layout__title-content--end]="
+          titleContentAlign === 'end'
+        "
+      >
+        <ng-content select="[klesDialogTitleContent]"></ng-content>
+      </div>
+
+      @if (fullsizeButton) {
+        <button
+          class="kles-dialog-layout__fullsize"
+          mat-icon-button
+          type="button"
+          [attr.aria-label]="
+            fullsize ? 'Exit full screen' : 'Enter full screen'
+          "
+          (click)="fullsizeToggle.emit()"
+        >
+          <mat-icon>{{ fullsize ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+        </button>
+      }
+    </div>
+  </div>
+}
+
+<mat-dialog-content class="kles-dialog-layout__content">
+  <ng-content select="[klesDialogContent]"></ng-content>
+</mat-dialog-content>
+
+@if (showFooter) {
+  <footer class="kles-dialog-layout__footer">
+    <div class="kles-dialog-layout__status" aria-live="polite">
+      <ng-content select="[klesDialogStatus]"></ng-content>
+    </div>
+
+    <mat-dialog-actions class="kles-dialog-layout__actions">
+      <div class="kles-dialog-layout__actions-start">
+        <ng-content select="[klesDialogActionsStart]"></ng-content>
+      </div>
+      <div class="kles-dialog-layout__actions-end">
+        <ng-content select="[klesDialogActionsEnd]"></ng-content>
+      </div>
+    </mat-dialog-actions>
+  </footer>
+}

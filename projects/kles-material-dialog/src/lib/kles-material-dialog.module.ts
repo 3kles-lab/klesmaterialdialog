@@ -8,12 +8,14 @@ import { SpinnerDialogComponent } from './components/spinner-dialog/spinner-dial
 import { KlesDynamicFormDialogComponent } from './components/dynamicform-dialog/dynamicform-dialog.component';
 import { KlesMaterialDynamicformsModule } from '@3kles/kles-material-dynamicforms';
 import { DialogService } from './services/dialog.service';
+import { KlesDialogLayoutComponent } from './components/dialog-layout/dialog-layout.component';
 
 const COMPONENTS = [
     AlertDialogComponent,
     ConfirmDialogComponent,
     SpinnerDialogComponent,
-    KlesDynamicFormDialogComponent
+    KlesDynamicFormDialogComponent,
+    KlesDialogLayoutComponent
 ];
 
 const SERVICES = [DialogService];
