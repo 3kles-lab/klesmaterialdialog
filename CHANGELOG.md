@@ -1,3 +1,10 @@
+## [22.0.1](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v22.0.0...v22.0.1) (2026-09-02)
+
+
+### Bug Fixes
+
+* fullsize border ([48ad224](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/48ad224932480b532158d8203ce5f327f268d0d1))
+
 # [22.0.0](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.4...v22.0.0) (2026-09-02)
 
 
