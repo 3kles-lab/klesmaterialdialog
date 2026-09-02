@@ -1,3 +1,23 @@
+# [22.0.0](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.4...v22.0.0) (2026-09-02)
+
+
+### Bug Fixes
+
+* deps ([492be83](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/492be83ccca42fc93dde2c5db18cac8b6f3cdc92))
+* update dialog to use signals ([e03d440](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/e03d440f6632cf83ec8f7acff174a4f00ec45f26))
+
+
+### Features
+
+* upgrade angular ([12240c2](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/12240c2bbcf75ba530629de400fb23b79984e3aa))
+* upgrade angular material ([d12be7d](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/d12be7deafd8e9a6f23aa7efe1725f0a8df406da))
+* use dialog layout ([f57d63f](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/f57d63f2b5c673ccee0c361744d86206e9bdc925))
+
+
+### BREAKING CHANGES
+
+* upgrade anguar 21 to 22
+
 ## [21.0.4](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v21.0.3...v21.0.4) (2026-09-01)
 
 
