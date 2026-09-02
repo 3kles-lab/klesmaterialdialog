@@ -50,7 +50,6 @@ include:
       stage: "build"
       node_version: $NODE_VERSION
       auth_token: $NPM_TOKEN
-      npm_install_args: "--legacy-peer-deps"
       build_command: >-
         echo "Building Angular library: $LIBRARY_NG";
         npm run build -- "$LIBRARY_NG" --configuration production
