@@ -1,3 +1,10 @@
+## [22.0.2](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v22.0.1...v22.0.2) (2026-09-02)
+
+
+### Bug Fixes
+
+* dialog max height ([c88eb75](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/c88eb75a21393841c072990a5c36189d352b2c89))
+
 ## [22.0.1](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v22.0.0...v22.0.1) (2026-09-02)
 
 
