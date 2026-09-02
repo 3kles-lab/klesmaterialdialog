@@ -8,7 +8,7 @@ import { ComponentType } from '@angular/cdk/portal';
 
 @Injectable()
 export class DialogService<T, TData = any, TResult = any> {
-    dialogRef: MatDialogRef<T, TResult>;
+    dialogRef!: MatDialogRef<T, TResult>;
 
     constructor(private dialog: MatDialog, @Inject('componentType') private componentType: ComponentType<T>) { }
 

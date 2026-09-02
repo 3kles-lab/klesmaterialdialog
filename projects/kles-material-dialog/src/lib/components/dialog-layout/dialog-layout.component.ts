@@ -18,7 +18,7 @@ export type KlesDialogTitleContentAlign = 'start' | 'center' | 'end';
   styleUrl: './dialog-layout.component.scss',
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, MatDialogModule, MatIconModule],
 })
 export class KlesDialogLayoutComponent {

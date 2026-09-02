@@ -22,7 +22,7 @@ import {
     </kles-dialog-layout>
   `,
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [KlesDialogLayoutComponent],
 })
 class TestHostComponent {

@@ -7,13 +7,14 @@ import {
   EventEmitter,
   ElementRef,
   ViewEncapsulation,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
-  IKlesFieldConfig,
+  flattenKlesFields,
   IKlesValidator,
   KlesDynamicFormComponent,
+  KlesFormElement,
   KlesMaterialDynamicformsModule,
 } from '@3kles/kles-material-dynamicforms';
 import {
@@ -26,6 +27,7 @@ import {
   UntypedFormGroup,
   ValidatorFn,
 } from '@angular/forms';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { KlesDialogAbstractComponent } from '../kles-dialog.component';
 import { CommonModule } from '@angular/common';
@@ -44,7 +46,7 @@ import { KlesDialogLayoutComponent } from '../dialog-layout/dialog-layout.compon
   ],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     CommonModule,
     MatButtonModule,
@@ -66,7 +68,7 @@ export class KlesDynamicFormDialogComponent<
   @ViewChild('errorElem') errorElemRef!: ElementRef<HTMLElement>;
 
   title: string | undefined;
-  fields: IKlesFieldConfig[];
+  fields: KlesFormElement[];
   validators: IKlesValidator<ValidatorFn>[] = [];
   asyncValidators: IKlesValidator<AsyncValidatorFn>[] = [];
   direction: KlesDynamicFormDirection = 'column';
@@ -77,6 +79,10 @@ export class KlesDynamicFormDialogComponent<
   icon: string | undefined;
   pending = new BehaviorSubject<boolean>(false);
   error$ = new BehaviorSubject<TError | null>(null);
+  protected readonly pendingState = toSignal(this.pending, {
+    initialValue: false,
+  });
+  protected readonly errorState = toSignal(this.error$, { initialValue: null });
 
   beforeClose: (item: TItem, form: FormGroup) => Observable<TResponse> = () =>
     of({} as TResponse);
@@ -100,7 +106,9 @@ export class KlesDynamicFormDialogComponent<
       this.direction = data.direction;
     }
     const itemValues = this.item as Record<string, unknown>;
-    data.fields.forEach((f) => (f.value = itemValues[f.name]));
+    flattenKlesFields(data.fields).forEach(
+      (field) => (field.value = itemValues[field.name]),
+    );
     this.fields = data.fields;
     this.icon = data.icon;
     if (data.buttonCancel) this.buttonCancel = data.buttonCancel;

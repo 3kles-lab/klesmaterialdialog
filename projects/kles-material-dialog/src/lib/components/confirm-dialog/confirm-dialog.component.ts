@@ -31,7 +31,7 @@ export interface IKlesConfirmDialogData {
   ],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, MatDialogModule, KlesDialogLayoutComponent],
 })
 export class ConfirmDialogComponent extends KlesDialogAbstractComponent {

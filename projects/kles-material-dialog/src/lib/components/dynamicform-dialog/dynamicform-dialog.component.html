@@ -15,7 +15,7 @@
   >
   </app-kles-dynamic-form>
 
-  @if (error$ | async; as error) {
+  @if (errorState(); as error) {
     <div klesDialogStatus #errorElem>
       <mat-error>{{ getErrorMessage(error) }}</mat-error>
     </div>
@@ -28,12 +28,12 @@
     <button
       mat-flat-button
       color="primary"
-      [disabled]="!dynamicForm.form.valid || (pending | async)"
+      [disabled]="!dynamicForm.form.valid || pendingState()"
       (click)="onOK()"
     >
       {{ buttonOK }}
 
-      @if (pending | async) {
+      @if (pendingState()) {
         <mat-icon
           ><mat-spinner color="primary" diameter="18"></mat-spinner
         ></mat-icon>

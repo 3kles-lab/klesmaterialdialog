@@ -1,6 +1,7 @@
 import {
   IKlesFieldConfig,
   IKlesValidator,
+  KlesFormElement,
 } from '@3kles/kles-material-dynamicforms';
 import { AsyncValidatorFn, FormGroup, ValidatorFn } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -13,7 +14,7 @@ export type KlesDynamicFormDirection =
   | 'inline-grid';
 
 export interface IKlesDynamicFormDataDialog<TItem = any, TResponse = any> {
-  fields: IKlesFieldConfig[];
+  fields: KlesFormElement[];
   validators?: IKlesValidator<ValidatorFn>[];
   asyncValidators?: IKlesValidator<AsyncValidatorFn>[];
   item?: TItem;

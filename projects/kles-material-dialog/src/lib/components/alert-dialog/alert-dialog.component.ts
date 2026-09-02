@@ -1,4 +1,9 @@
-import { Component, Inject, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  Inject,
+  ViewEncapsulation,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialogModule,
@@ -23,19 +28,17 @@ export interface IKlesAlertDialogData {
 
 @Component({
   templateUrl: './alert-dialog.component.html',
-  styleUrls: [
-    '../../../../styles/message-dialog.style.scss',
-  ],
+  styleUrls: ['../../../../styles/message-dialog.style.scss'],
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButtonModule, MatDialogModule, KlesDialogLayoutComponent],
 })
 export class AlertDialogComponent extends KlesDialogAbstractComponent {
   message = '';
   cancelButtonText = 'cancel';
-  title!: string;
-  icon!: string;
+  title = '';
+  icon = '';
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private data: IKlesAlertDialogData | null,
@@ -44,8 +47,8 @@ export class AlertDialogComponent extends KlesDialogAbstractComponent {
     super(dialogRef);
     if (data) {
       this.message = data.message || this.message;
-      this.title = data.title;
-      this.icon = data.icon;
+      this.title = data.title || this.title;
+      this.icon = data.icon || this.icon;
       if (data.buttonText) {
         this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
       }

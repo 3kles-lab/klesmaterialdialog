@@ -15,7 +15,7 @@ import { KlesDialogLayoutComponent } from '../dialog-layout/dialog-layout.compon
     }
   `,
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatProgressSpinnerModule, KlesDialogLayoutComponent],
 })
 export class SpinnerDialogComponent<TData = any> extends KlesDialogAbstractComponent {
