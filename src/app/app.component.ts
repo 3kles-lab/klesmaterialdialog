@@ -1,6 +1,4 @@
 import {
-  IKlesFieldConfig,
-  KlesFormCheckboxComponent,
   KlesFormChipGridComponent,
   KlesFormElement,
   KlesFormImageUploadComponent,
@@ -9,7 +7,6 @@ import {
 } from '@3kles/kles-material-dynamicforms';
 
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 import {

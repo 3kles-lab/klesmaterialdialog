@@ -12,7 +12,9 @@ import {
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {
   flattenKlesFields,
+  IKlesFieldConfig,
   IKlesValidator,
+  isKlesStructuralElement,
   KlesDynamicFormComponent,
   KlesFormElement,
   KlesMaterialDynamicformsModule,
@@ -28,7 +30,7 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, defer, finalize, Observable, of, take } from 'rxjs';
 import { KlesDialogAbstractComponent } from '../kles-dialog.component';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -36,6 +38,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { KlesDialogLayoutComponent } from '../dialog-layout/dialog-layout.component';
+
+function copyFieldConfig(field: IKlesFieldConfig): IKlesFieldConfig {
+  const copy = { ...field };
+  if (Array.isArray(field.collections)) {
+    copy.collections = field.collections.map(copyFieldConfig);
+  }
+  return copy;
+}
+
+function copyFormElement(element: KlesFormElement): KlesFormElement {
+  if (!isKlesStructuralElement(element)) {
+    return copyFieldConfig(element);
+  }
+  if (element.type === 'section' || element.type === 'layoutGroup') {
+    return { ...element, fields: element.fields.map(copyFormElement) };
+  }
+  return { ...element };
+}
 
 @Component({
   templateUrl: './dynamicform-dialog.component.html',
@@ -105,11 +125,13 @@ export class KlesDynamicFormDialogComponent<
     if (data.direction) {
       this.direction = data.direction;
     }
+    this.fields = data.fields.map(copyFormElement);
     const itemValues = this.item as Record<string, unknown>;
-    flattenKlesFields(data.fields).forEach(
-      (field) => (field.value = itemValues[field.name]),
-    );
-    this.fields = data.fields;
+    for (const field of flattenKlesFields(this.fields)) {
+      if (Object.hasOwn(itemValues, field.name)) {
+        field.value = itemValues[field.name];
+      }
+    }
     this.icon = data.icon;
     if (data.buttonCancel) this.buttonCancel = data.buttonCancel;
     if (data.buttonOK) this.buttonOK = data.buttonOK;
@@ -151,28 +173,32 @@ export class KlesDynamicFormDialogComponent<
     this.dialogRef.close('close');
   }
   onOK() {
+    if (this.pending.value) {
+      return;
+    }
+
     this.pending.next(true);
-    this.beforeClose(this.item, this.dynamicForm.form).subscribe({
-      next: (response) => {
-        this.pending.next(false);
-        this.dialogRef.close({
-          item: this.item,
-          form: this.dynamicForm.form.getRawValue(),
-          ...(response && { response }),
-        });
-      },
-      error: (e: unknown) => {
-        console.error(e);
-        this.error$.next(e as TError);
-        this.pending.next(false);
-        this.ref.markForCheck();
-        setTimeout(() => {
-          this.errorElemRef?.nativeElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
+    defer(() => this.beforeClose(this.item, this.dynamicForm.form))
+      .pipe(take(1), finalize(() => this.pending.next(false)))
+      .subscribe({
+        next: (response) => {
+          this.dialogRef.close({
+            item: this.item,
+            form: this.dynamicForm.form.getRawValue(),
+            ...(response && { response }),
           });
-        });
-      },
-    });
+        },
+        error: (e: unknown) => {
+          console.error(e);
+          this.error$.next(e as TError);
+          this.ref.markForCheck();
+          setTimeout(() => {
+            this.errorElemRef?.nativeElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
+            });
+          });
+        },
+      });
   }
 }

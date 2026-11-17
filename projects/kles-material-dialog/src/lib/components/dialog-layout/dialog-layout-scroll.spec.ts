@@ -50,6 +50,8 @@ describe('KlesDialogLayoutComponent scrolling in MatDialog', () => {
       TestBed.inject(MatDialog).open(ScrollTestDialogComponent, {
         data: mode,
         autoFocus: false,
+        width: '350px',
+        height: '90vh',
       });
       TestBed.tick();
 
@@ -88,6 +90,9 @@ describe('KlesDialogLayoutComponent scrolling in MatDialog', () => {
         scroller.scrollTop = 0;
       }
 
+      const windowedSize = pane.getBoundingClientRect();
+      expect(windowedSize.width).toBeCloseTo(350, 0);
+      expect(windowedSize.height).toBeCloseTo(window.innerHeight * 0.9, 0);
       expectScroll('windowed');
 
       toggle.click();
@@ -99,7 +104,8 @@ describe('KlesDialogLayoutComponent scrolling in MatDialog', () => {
       toggle.click();
       TestBed.tick();
       expect(pane.classList.contains('dialog-fullsize')).toBeFalse();
-      expect(pane.getBoundingClientRect().height).toBeLessThan(window.innerHeight);
+      expect(pane.getBoundingClientRect().width).toBeCloseTo(windowedSize.width, 0);
+      expect(pane.getBoundingClientRect().height).toBeCloseTo(windowedSize.height, 0);
       expectScroll('back to windowed');
     });
   }

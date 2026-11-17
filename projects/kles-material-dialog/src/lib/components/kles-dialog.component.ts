@@ -26,13 +26,12 @@ export abstract class KlesDialogAbstractComponent implements IKlesDialogComponen
     }
 
     public setFullsize() {
+        // The panel class overrides the dialog dimensions while it is full screen.
         this.dialogRef.addPanelClass('dialog-fullsize');
-        this.dialogRef.updateSize('100vw', '100vh');
         this.fullsize.set(true);
     }
 
     public closeFullsize() {
-        this.dialogRef.updateSize('auto', 'auto');
         this.dialogRef.removePanelClass('dialog-fullsize');
         this.dialogRef.updatePosition();
         this.fullsize.set(false);
