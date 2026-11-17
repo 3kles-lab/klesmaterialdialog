@@ -106,6 +106,12 @@ kles-dialog-layout {
     font: var(--mat-sys-body-large);
   }
 
+  &__content--delegated.mat-mdc-dialog-content {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
   &__footer {
     display: block;
     flex: 0 0 auto;

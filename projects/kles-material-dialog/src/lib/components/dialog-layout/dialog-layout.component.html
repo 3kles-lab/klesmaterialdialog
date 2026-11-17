@@ -43,7 +43,10 @@
   </div>
 }
 
-<mat-dialog-content class="kles-dialog-layout__content">
+<mat-dialog-content
+  class="kles-dialog-layout__content"
+  [class.kles-dialog-layout__content--delegated]="contentScroll === 'delegated'"
+>
   <ng-content select="[klesDialogContent]"></ng-content>
 </mat-dialog-content>
 

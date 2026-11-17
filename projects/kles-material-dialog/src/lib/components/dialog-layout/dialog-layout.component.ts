@@ -27,6 +27,7 @@ export class KlesDialogLayoutComponent {
   @Input() fullsizeButton = false;
   @Input() showHeader = true;
   @Input() showFooter = true;
+  @Input() contentScroll: 'dialog' | 'delegated' = 'dialog';
   @Input() titleContentAlign: KlesDialogTitleContentAlign = 'end';
 
   @Output() readonly fullsizeToggle = new EventEmitter<void>();

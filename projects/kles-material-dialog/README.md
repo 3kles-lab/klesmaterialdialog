@@ -47,6 +47,12 @@ Check the [`documentation`](https://doc.3kles-consulting.com/#/material/dialog) 
 `klesDialogActionsStart` and `klesDialogActionsEnd`. The content is scrollable;
 the status and actions remain together in a fixed footer.
 
+Set `contentScroll="delegated"` to let the projected content control scrolling.
+Give its root `flex: 1 1 auto` and `min-height: 0`, and set `overflow-y: auto`
+on the section that should scroll. For nested column layouts, give intermediate
+flex items `min-height: 0` so the scrolling section can shrink. The default
+`contentScroll="dialog"` scrolls the entire `klesDialogContent` area.
+
 The additional title content is right-aligned by default. Use
 `titleContentAlign` to place it at the start, center or end of the available
 title row:
