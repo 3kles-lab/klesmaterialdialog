@@ -75,7 +75,7 @@ describe('KlesDialogLayoutComponent', () => {
     expect(
       parseFloat(getComputedStyle(titleContent).marginInlineStart),
     ).toBeGreaterThan(0);
-    expect(titleContent.nextElementSibling).toBe(fullsizeButton);
+    expect(titleContent.nextElementSibling).toBe(fullsizeButton.parentElement);
   });
 
   it('supports start, center and end title content alignment', () => {

@@ -25,6 +25,9 @@ export class KlesDialogLayoutComponent {
   @Input() icon?: string;
   @Input() fullsize = false;
   @Input() fullsizeButton = false;
+  @Input() closeButton = false;
+  @Input() closeButtonAriaLabel?: string;
+  @Input() closeButtonResult?: unknown;
   @Input() showHeader = true;
   @Input() showFooter = true;
   @Input() contentScroll: 'dialog' | 'delegated' = 'dialog';

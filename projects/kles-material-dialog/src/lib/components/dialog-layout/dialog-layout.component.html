@@ -26,18 +26,34 @@
         <ng-content select="[klesDialogTitleContent]"></ng-content>
       </div>
 
-      @if (fullsizeButton) {
-        <button
-          class="kles-dialog-layout__fullsize"
-          mat-icon-button
-          type="button"
-          [attr.aria-label]="
-            fullsize ? 'Exit full screen' : 'Enter full screen'
-          "
-          (click)="fullsizeToggle.emit()"
-        >
-          <mat-icon>{{ fullsize ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
-        </button>
+      @if (fullsizeButton || closeButton) {
+        <div class="kles-dialog-layout__title-actions">
+          @if (fullsizeButton) {
+            <button
+              class="kles-dialog-layout__fullsize"
+              mat-icon-button
+              type="button"
+              [attr.aria-label]="
+                fullsize ? 'Exit full screen' : 'Enter full screen'
+              "
+              (click)="fullsizeToggle.emit()"
+            >
+              <mat-icon>{{ fullsize ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+            </button>
+          }
+
+          @if (closeButton) {
+            <button
+              class="kles-dialog-layout__close"
+              mat-icon-button
+              type="button"
+              [aria-label]="closeButtonAriaLabel ?? 'Close dialog'"
+              [mat-dialog-close]="closeButtonResult"
+            >
+              <mat-icon aria-hidden="true">close</mat-icon>
+            </button>
+          }
+        </div>
       }
     </div>
   </div>

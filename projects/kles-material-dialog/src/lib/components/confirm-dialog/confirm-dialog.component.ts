@@ -54,12 +54,7 @@ export class ConfirmDialogComponent extends KlesDialogAbstractComponent {
         this.confirmButtonText = data.buttonText.ok || this.confirmButtonText;
         this.cancelButtonText = data.buttonText.cancel || this.cancelButtonText;
       }
-      if (data.option) {
-        if (data.option.fullsize) {
-          this.setFullsize();
-        }
-        this.fullsizeButton.set(data.option.fullsizeButton || false);
-      }
+      this.applyDialogOptions(data.option);
     }
   }
 

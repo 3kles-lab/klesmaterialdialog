@@ -9,13 +9,26 @@ export interface IKlesDialogComponent {
 export interface IKlesDialogOptions {
     fullsizeButton?: boolean;
     fullsize?: boolean;
+    closeButton?: boolean;
+    closeButtonAriaLabel?: string;
 }
 
 export abstract class KlesDialogAbstractComponent implements IKlesDialogComponent {
     public fullsize = signal(false);
     public fullsizeButton = signal(false);
+    public closeButton = signal(false);
+    public closeButtonAriaLabel = signal<string | undefined>(undefined);
 
     constructor(public dialogRef: MatDialogRef<KlesDialogAbstractComponent>) { }
+
+    protected applyDialogOptions(options?: IKlesDialogOptions): void {
+        if (options?.fullsize) {
+            this.setFullsize();
+        }
+        this.fullsizeButton.set(options?.fullsizeButton ?? false);
+        this.closeButton.set(options?.closeButton ?? false);
+        this.closeButtonAriaLabel.set(options?.closeButtonAriaLabel);
+    }
 
     public toggleFullsize(): void {
         if (!this.fullsize()) {

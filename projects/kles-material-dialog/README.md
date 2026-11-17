@@ -64,6 +64,18 @@ title row:
 </kles-dialog-layout>
 ```
 
+Enable the header close button with `[closeButton]="true"`.
+
+```html
+<kles-dialog-layout [closeButton]="true" closeButtonAriaLabel="Fermer la fenêtre">
+  <span klesDialogTitle>Connexion</span>
+</kles-dialog-layout>
+```
+
+Set `closeButtonResult` to pass a value to `afterClosed()`. For built-in alert,
+confirmation and dynamic form dialogs, set `data.option.closeButton` to `true`.
+The built-in options also accept `closeButtonAriaLabel` for a localized label.
+
 The following custom dialog keeps the domain-specific "test connection" action
 in the application while reusing the library layout and
 `KlesDynamicFormComponent`.

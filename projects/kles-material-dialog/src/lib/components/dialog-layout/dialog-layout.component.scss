@@ -85,12 +85,19 @@ kles-dialog-layout {
     font-size: 24px;
   }
 
-  &__fullsize {
+  &__title-actions {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+  }
+
+  &__fullsize,
+  &__close {
     flex: 0 0 auto;
     color: var(--mat-sys-on-surface-variant);
   }
 
-  &__title-content--start + &__fullsize {
+  &__title-content--start + &__title-actions {
     margin-inline-start: auto;
   }
 

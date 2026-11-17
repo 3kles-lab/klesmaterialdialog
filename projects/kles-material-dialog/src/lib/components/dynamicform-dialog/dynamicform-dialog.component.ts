@@ -136,12 +136,7 @@ export class KlesDynamicFormDialogComponent<
     if (data.buttonCancel) this.buttonCancel = data.buttonCancel;
     if (data.buttonOK) this.buttonOK = data.buttonOK;
     if (data.title) this.title = data.title;
-    if (data.option) {
-      if (data.option.fullsize) {
-        this.setFullsize();
-      }
-      this.fullsizeButton.set(data.option.fullsizeButton || false);
-    }
+    this.applyDialogOptions(data.option);
 
     if (data.beforeClose) {
       this.beforeClose = data.beforeClose;
