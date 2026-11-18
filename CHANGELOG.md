@@ -1,3 +1,16 @@
+# [22.1.0](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v22.0.2...v22.1.0) (2026-11-18)
+
+
+### Bug Fixes
+
+* lint and lost data with undefined object property ([4f67bc9](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/4f67bc97616ce33adf10b0e53d6ec3cf0e80092e))
+
+
+### Features
+
+* add close button ([f72327d](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/f72327d988b3367d47dca200a8b8c3b2dcadb7a7))
+* add contentScroll option ([73bc988](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/commit/73bc9886e2a2691601a70e43e6430d228eab5cf2))
+
 ## [22.0.2](http://gitlab.3kles.local/3kles/lib/angular/material/klesmaterialdialog/compare/v22.0.1...v22.0.2) (2026-09-02)
 
 
